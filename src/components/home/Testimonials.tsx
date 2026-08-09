@@ -9,8 +9,9 @@ export default async function Testimonials() {
   });
 
   return (
-    <section className="section">
-      <div className="container-xl">
+    <section className="section bg-[#F8F7F4]">
+      <div className="container-xl flex flex-col gap-12 ">
+        <div className="text-center">
         <span className="tagline-center">Testimonials</span>
 
         <h2 className="section-title">What Our Students Say</h2>
@@ -19,6 +20,7 @@ export default async function Testimonials() {
           Hear from students and graduates who have built real careers through
           training at KSTTI.
         </p>
+        </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((item) => (
