@@ -1,7 +1,13 @@
 // src/app/layout.tsx
 
 import type { Metadata } from "next";
-import { Cinzel, Caveat, DM_Sans, Libre_Baskerville } from "next/font/google";
+import {
+  Cinzel,
+  Satisfy,
+  DM_Sans,
+  Libre_Baskerville,
+  Bodoni_Moda,
+} from "next/font/google";
 import "./globals.css";
 import IntakePopup from "@/components/home/IntakePopup";
 
@@ -19,6 +25,13 @@ const libreBaskerville = Libre_Baskerville({
   display: "swap",
 });
 
+const bodoniModa = Bodoni_Moda({
+  subsets: ["latin"],
+  variable: "--font-bodoni",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
@@ -26,10 +39,10 @@ const cinzel = Cinzel({
   display: "swap",
 });
 
-const caveat = Caveat({
+const satisfy = Satisfy({
   subsets: ["latin"],
-  variable: "--font-caveat",
-  weight: ["600", "700"],
+  variable: "--font-satisfy",
+  weight: "400",
   display: "swap",
 });
 
@@ -50,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${libreBaskerville.variable} ${cinzel.variable} ${caveat.variable}`}
+        className={`${dmSans.variable} ${libreBaskerville.variable} ${bodoniModa.variable} ${cinzel.variable} ${satisfy.variable}`}
       >
         {children}
         <IntakePopup />

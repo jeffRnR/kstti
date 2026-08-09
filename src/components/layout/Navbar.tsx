@@ -7,25 +7,8 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import TopBar from "./TopBar";
+import Image from "next/image";
 
-const departments = [
-  {
-    name: "Beauty & Cosmetology",
-    courses: ["Hairdressing", "Beauty Therapy", "Barbering", "Nail Technology"],
-  },
-  {
-    name: "ICT",
-    courses: ["Computer Packages", "ICT", "Software Development"],
-  },
-  {
-    name: "Business",
-    courses: ["Business Management", "Sales & Marketing"],
-  },
-  {
-    name: "Hospitality",
-    courses: ["Food Production", "Catering"],
-  },
-];
 
 export default function Navbar() {
   const pathname = usePathname() || "/";
@@ -56,14 +39,18 @@ export default function Navbar() {
 
           {/* Brand mark */}
           <Link href="/" className="flex items-center gap-3.5">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E5AD23] text-lg font-black text-black shadow-md">
-              K
-            </span>
-            <div className="leading-tight">
-              <span className="block font-[family:var(--font-display)] text-[1.05rem] font-bold tracking-[0.18em] text-black">
-                KSTTI
+            <Image
+              src="/logo.png"
+              alt="KSTTI Logo"
+              className="object-cover"
+              width={70}
+              height={70}
+            />
+            <div className="leading-tight sm:block hidden">
+              <span className="block font-[family:var(--font-serif)] text-[1.09rem] sm:text-[0.9rem] font-bold max-w-[250px] text-black">
+                KIRINYAGA SENIORS TECHNICAL TRAINING INSTITUTE
               </span>
-              <span className="font-[family:var(--font-script)] text-[0.9rem] font-semibold text-[#C4931A]">
+              <span className="font-[family:var(--font-script)] text-[0.82rem] sm:text-[0.7rem] font-semibold text-[#C4931A]">
                 Empowering minds for tomorrow
               </span>
             </div>

@@ -4,25 +4,25 @@
 
 @theme {
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-baskerville), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-bodoni), Georgia, "Times New Roman", serif;
   --font-display: var(--font-cinzel), "Times New Roman", serif;
-  --font-script: var(--font-caveat), cursive;
+  --font-script: var(--font-satisfy), cursive;
 
-  --color-primary: #E5AD23;
-  --color-primary-light: #F0C04A;
-  --color-primary-dark: #C4931A;
-  --color-primary-muted: #FDF6E3;
+  --color-primary: #e5ad23;
+  --color-primary-light: #f0c04a;
+  --color-primary-dark: #c4931a;
+  --color-primary-muted: #fdf6e3;
 
-  --color-ink: #0A0A0A;
-  --color-ink-soft: #1C1C1C;
-  --color-surface: #FFFFFF;
-  --color-surface-muted: #F8F7F4;
-  --color-border: #E8E4DC;
-  --color-border-strong: #D4CFC4;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #1c1c1c;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8f7f4;
+  --color-border: #e8e4dc;
+  --color-border-strong: #d4cfc4;
 
-  --color-text-base: #1C1C1C;
-  --color-text-muted: #6B6560;
-  --color-text-faint: #9B9590;
+  --color-text-base: #1c1c1c;
+  --color-text-muted: #6b6560;
+  --color-text-faint: #9b9590;
 }
 
 /* ─── Base ─────────────────────────────────────────────── */
@@ -132,7 +132,7 @@ body {
 
 /* Dark background override — wrap in a dark section and tagline reads gold */
 .tagline-center.text-\[\#E5AD23\] {
-  color: #E5AD23;
+  color: #e5ad23;
 }
 
 /* ─── Typography: section headings ─────────────────────── */
@@ -184,7 +184,9 @@ body {
   border-radius: 1rem;
   padding: 2.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.25s ease-out;
 }
 
 .card-hover:hover {
@@ -208,7 +210,9 @@ body {
   border-radius: 0.5rem;
   border: 2px solid var(--color-primary);
   text-decoration: none;
-  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    background-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .btn-primary:hover {
@@ -231,7 +235,9 @@ body {
   border-radius: 0.5rem;
   border: 2px solid var(--color-border-strong);
   text-decoration: none;
-  transition: border-color 0.18s ease, color 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .btn-secondary:hover {
@@ -244,16 +250,18 @@ body {
   align-items: center;
   gap: 0.5rem;
   background-color: transparent;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   padding: 0.8125rem 1.75rem;
   border-radius: 0.5rem;
-  border: 2px solid rgba(255,255,255,0.35);
+  border: 2px solid rgba(255, 255, 255, 0.35);
   text-decoration: none;
-  transition: border-color 0.18s ease, background-color 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease;
 }
 
 .btn-secondary-inverted:hover {
