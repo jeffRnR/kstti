@@ -4,185 +4,208 @@
 
 import { FormEvent, useEffect, useState } from "react";
 
-type Campus = {
-  id: string;
-  name: string;
-};
-
-type Course = {
-  id: string;
-  name: string;
-  department: string;
-};
+type Campus = { id: string; name: string };
+type Course = { id: string; name: string; department: string };
 
 export default function ApplicationForm() {
   const [campuses, setCampuses] = useState<Campus[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   useEffect(() => {
     async function loadData() {
       try {
         const response = await fetch("/api/applications/options");
-
-        if (!response.ok) {
-          throw new Error("Failed to load application options");
-        }
-
+        if (!response.ok) throw new Error("Failed to load application options");
         const data = await response.json();
-
         setCampuses(data.campuses);
         setCourses(data.courses);
       } catch {
-        setMessage("Unable to load application options.");
+        setMessage({ type: "error", text: "Unable to load application options." });
       } finally {
         setLoading(false);
       }
     }
-
     loadData();
   }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitting(true);
-    setMessage("");
-
+    setMessage(null);
     const form = event.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("/api/applications", {
-        method: "POST",
-        body: formData,
-      });
-
+      const response = await fetch("/api/applications", { method: "POST", body: formData });
       const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Application submission failed.");
-      }
-
-      setMessage(
-        `Application submitted successfully. Your application number is ${data.applicationNumber}.`,
-      );
-
+      if (!response.ok) throw new Error(data.message || "Application submission failed.");
+      setMessage({
+        type: "success",
+        text: `Application submitted successfully. Your application number is ${data.applicationNumber}.`,
+      });
       form.reset();
     } catch (error) {
-      setMessage(
-        error instanceof Error
-          ? error.message
-          : "Application submission failed.",
-      );
+      setMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Application submission failed.",
+      });
     } finally {
       setSubmitting(false);
     }
   }
 
   if (loading) {
-    return <div className="card p-8 text-center">Loading application form...</div>;
+    return (
+      <div className="card flex items-center justify-center py-20 text-center">
+        <div>
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#E5AD23] border-t-transparent" />
+          <p className="mt-5 text-sm font-medium text-neutral-500">Loading application form...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card space-y-8 p-6 md:p-10">
-      <div>
-        <h2 className="text-2xl">Personal Information</h2>
-        <p className="mt-2 text-sm text-neutral-500">
-          Provide your details as they appear on your official documents.
-        </p>
-      </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="First Name" name="firstName" required />
-        <Field label="Middle Name" name="middleName" />
-        <Field label="Last Name" name="lastName" required />
-        <Field label="Email Address" name="email" type="email" required />
-        <Field label="Phone Number" name="phone" type="tel" required />
+      <FormSection
+        step="01"
+        title="Personal Information"
+        description="Provide your details as they appear on your official documents."
+      >
+        <div className="grid gap-7 md:grid-cols-2">
+          <Field label="First Name" name="firstName" required />
+          <Field label="Middle Name" name="middleName" />
+          <Field label="Last Name" name="lastName" required />
+          <Field label="Email Address" name="email" type="email" required />
+          <Field label="Phone Number" name="phone" type="tel" required />
+          <SelectField label="Gender" name="gender" required>
+            <option value="">Select gender</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+          </SelectField>
+          <Field label="Date of Birth" name="dateOfBirth" type="date" required />
+          <Field label="Nationality" name="nationality" required />
+          <Field label="County" name="county" required />
+          <Field label="Sub County" name="subCounty" />
+          <Field label="Postal Address" name="postalAddress" required />
+          <Field label="National ID / Passport Number" name="nationalId" />
+        </div>
+      </FormSection>
 
-        <SelectField label="Gender" name="gender" required>
-          <option value="">Select gender</option>
-          <option value="MALE">Male</option>
-          <option value="FEMALE">Female</option>
-          <option value="OTHER">Other</option>
-        </SelectField>
+      <FormSection
+        step="02"
+        title="Education & Programme"
+        description="Tell us about your academic background and preferred course."
+      >
+        <div className="grid gap-7 md:grid-cols-2">
+          <Field label="KCSE Index Number" name="kcseIndexNumber" />
+          <Field label="KCSE Grade" name="kcseGrade" />
+          <SelectField label="Preferred Campus" name="campusId" required>
+            <option value="">Select campus</option>
+            {campuses.map((campus) => (
+              <option key={campus.id} value={campus.id}>{campus.name}</option>
+            ))}
+          </SelectField>
+          <SelectField label="Course" name="courseId" required>
+            <option value="">Select course</option>
+            {courses.map((course) => (
+              <option key={course.id} value={course.id}>
+                {course.name} — {course.department}
+              </option>
+            ))}
+          </SelectField>
+        </div>
+      </FormSection>
 
-        <Field
-          label="Date of Birth"
-          name="dateOfBirth"
-          type="date"
-          required
-        />
+      <FormSection
+        step="03"
+        title="Parent / Guardian"
+        description="Emergency contact and guardian details."
+      >
+        <div className="grid gap-7 md:grid-cols-2">
+          <Field label="Guardian Name" name="guardianName" />
+          <Field label="Guardian Phone" name="guardianPhone" type="tel" />
+        </div>
+      </FormSection>
 
-        <Field label="Nationality" name="nationality" required />
-        <Field label="County" name="county" required />
-        <Field label="Sub County" name="subCounty" />
-        <Field label="Postal Address" name="postalAddress" required />
-
-        <Field label="National ID / Passport Number" name="nationalId" />
-      </div>
-
-      <div>
-        <h2 className="text-2xl">Education</h2>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="KCSE Index Number" name="kcseIndexNumber" />
-        <Field label="KCSE Grade" name="kcseGrade" />
-
-        <SelectField label="Preferred Campus" name="campusId" required>
-          <option value="">Select campus</option>
-          {campuses.map((campus) => (
-            <option key={campus.id} value={campus.id}>
-              {campus.name}
-            </option>
-          ))}
-        </SelectField>
-
-        <SelectField label="Course" name="courseId" required>
-          <option value="">Select course</option>
-          {courses.map((course) => (
-            <option key={course.id} value={course.id}>
-              {course.name} | {course.department}
-            </option>
-          ))}
-        </SelectField>
-      </div>
-
-      <div>
-        <h2 className="text-2xl">Parent / Guardian</h2>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Guardian Name" name="guardianName" />
-        <Field label="Guardian Phone" name="guardianPhone" type="tel" />
-      </div>
-
-      <div>
-        <h2 className="text-2xl">Documents</h2>
-
-        <div className="mt-5 grid gap-6 md:grid-cols-3">
+      <FormSection
+        step="04"
+        title="Documents"
+        description="Upload clear copies of the required documents. Accepted formats: JPG, PNG, PDF."
+      >
+        <div className="grid gap-7 md:grid-cols-3">
           <FileField label="Passport Photo" name="passportPhoto" />
           <FileField label="ID Copy" name="idCopy" />
           <FileField label="Certificate" name="certificateFile" />
         </div>
-      </div>
+      </FormSection>
 
       {message && (
-        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm">
-          {message}
+        <div
+          className={`rounded-xl border p-5 text-sm font-medium ${
+            message.type === "success"
+              ? "border-green-200 bg-green-50 text-green-800"
+              : "border-red-200 bg-red-50 text-red-800"
+          }`}
+        >
+          {message.text}
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {submitting ? "Submitting..." : "Submit Application"}
-      </button>
+      <div className="flex items-center gap-5 pt-4">
+        <button
+          type="submit"
+          disabled={submitting}
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {submitting ? (
+            <span className="flex items-center gap-2">
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent" />
+              Submitting...
+            </span>
+          ) : (
+            "Submit Application"
+          )}
+        </button>
+        <p className="text-xs text-neutral-400">
+          Fields marked <span className="text-red-500">*</span> are required.
+        </p>
+      </div>
     </form>
+  );
+}
+
+function FormSection({
+  step,
+  title,
+  description,
+  children,
+}: {
+  step: string;
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="card-static">
+      <div className="mb-9 flex items-start gap-5 border-b border-[#E8E4DC] pb-9">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#E5AD23] font-[family:var(--font-serif)] text-sm font-bold text-black">
+          {step}
+        </span>
+        <div>
+          <h2 className="font-[family:var(--font-serif)] text-xl font-bold text-[#0A0A0A]">
+            {title}
+          </h2>
+          <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">{description}</p>
+        </div>
+      </div>
+      {children}
+    </div>
   );
 }
 
@@ -198,18 +221,17 @@ function Field({
   required?: boolean;
 }) {
   return (
-    <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-semibold">
+    <div className="flex flex-col gap-2">
+      <label htmlFor={name} className="text-sm font-semibold text-[#1C1C1C]">
         {label}
-        {required && <span className="ml-1 text-red-600">*</span>}
+        {required && <span className="ml-1 text-red-500">*</span>}
       </label>
-
       <input
         id={name}
         name={name}
         type={type}
         required={required}
-        className="input"
+        className="w-full rounded-lg border border-[#D4CFC4] bg-white px-4 py-3 text-sm text-[#1C1C1C] outline-none focus:border-[#E5AD23] focus:ring-2 focus:ring-[#E5AD23]/20 placeholder:text-neutral-400"
       />
     </div>
   );
@@ -227,39 +249,40 @@ function SelectField({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-semibold">
+    <div className="flex flex-col gap-2">
+      <label htmlFor={name} className="text-sm font-semibold text-[#1C1C1C]">
         {label}
-        {required && <span className="ml-1 text-red-600">*</span>}
+        {required && <span className="ml-1 text-red-500">*</span>}
       </label>
-
-      <select id={name} name={name} required={required} className="input">
+      <select
+        id={name}
+        name={name}
+        required={required}
+        className="w-full rounded-lg border border-[#D4CFC4] bg-white px-4 py-3 text-sm text-[#1C1C1C] outline-none focus:border-[#E5AD23] focus:ring-2 focus:ring-[#E5AD23]/20"
+      >
         {children}
       </select>
     </div>
   );
 }
 
-function FileField({
-  label,
-  name,
-}: {
-  label: string;
-  name: string;
-}) {
+function FileField({ label, name }: { label: string; name: string }) {
   return (
-    <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-semibold">
+    <div className="flex flex-col gap-2">
+      <label htmlFor={name} className="text-sm font-semibold text-[#1C1C1C]">
         {label}
       </label>
-
-      <input
-        id={name}
-        name={name}
-        type="file"
-        className="input"
-        accept="image/*,.pdf"
-      />
+      <div className="relative flex min-h-[100px] w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[#D4CFC4] bg-[#F8F7F4] px-4 py-8 text-center">
+        <p className="text-xs font-semibold text-neutral-500">Click to upload</p>
+        <p className="mt-1.5 text-[0.7rem] text-neutral-400">JPG, PNG or PDF</p>
+        <input
+          id={name}
+          name={name}
+          type="file"
+          className="absolute inset-0 cursor-pointer opacity-0"
+          accept="image/*,.pdf"
+        />
+      </div>
     </div>
   );
 }

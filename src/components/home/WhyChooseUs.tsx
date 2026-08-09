@@ -22,7 +22,7 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section className="section bg-[#F8F7F4]">
-      <div className="container-xl">
+      <div className="container-xl flex flex-col gap-12">
         <div className="text-center">
           <span className="tagline-center">Why Choose KSTTI</span>
           <h2 className="section-title">Learn In A Supportive Environment</h2>
@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {features.map((feature) => (
-            <article key={feature.title} className="card flex flex-col">
+            <article key={feature.title} className="card-hover flex flex-col">
               <div className="mb-6 h-1 w-10 rounded-full bg-[#E5AD23]" />
 
               <h3 className="mb-3 font-[family:var(--font-serif)] text-xl font-bold text-[#0A0A0A]">

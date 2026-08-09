@@ -1,0 +1,281 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum CampusCode {
+  KERUGOYA
+  RUAI
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  ADMISSIONS
+  REGISTRAR
+  ACCOUNTANT
+  TRAINER
+  STAFF
+  STUDENT
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  ADMITTED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum IntakeStatus {
+  OPEN
+  CLOSING_SOON
+  CLOSED
+}
+
+enum GallerySpan {
+  NORMAL
+  TALL
+  WIDE_TALL
+}
+
+model User {
+  id       String  @id @default(cuid())
+  name     String
+  email    String  @unique
+  password String
+  phone    String?
+  role     Role
+  active   Boolean @default(true)
+
+  admissions AdmissionApplication[] @relation("ProcessedBy")
+  student    Student?
+  staff      Staff?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Campus {
+  id   String     @id @default(cuid())
+  name String     @unique
+  code CampusCode @unique
+
+  location    String?
+  address     String?
+  directions  String?
+  description String?
+  image       String?
+  mapsUrl     String?
+  mapEmbedUrl String?
+
+  phone String?
+  email String?
+
+  departments DepartmentCampus[]
+  courses     Course[]
+  students    Student[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Department {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String?
+  isActive    Boolean @default(true)
+
+  campuses DepartmentCampus[]
+  courses  Course[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DepartmentCampus {
+  departmentId String
+  campusId     String
+
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  campus     Campus     @relation(fields: [campusId], references: [id], onDelete: Cascade)
+
+  @@id([departmentId, campusId])
+  @@index([campusId])
+}
+
+model Course {
+  id             String       @id @default(cuid())
+  name           String
+  slug           String       @unique
+  code           String       @unique
+  description    String?
+  duration       String
+  qualification  String?
+  requirements   String?
+  intakeStatus   IntakeStatus @default(OPEN)
+  campusLabel    String
+  feePerSemester String?
+  featured       Boolean      @default(false)
+  isActive       Boolean      @default(true)
+
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id])
+
+  campusId String?
+  campus   Campus? @relation(fields: [campusId], references: [id])
+
+  applications AdmissionApplication[]
+  students     Student[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([departmentId])
+  @@index([campusId])
+  @@index([intakeStatus])
+}
+
+model AdmissionApplication {
+  id String @id @default(cuid())
+
+  applicationNumber String @unique
+
+  firstName  String
+  middleName String?
+  lastName   String
+
+  email String
+  phone String
+
+  gender      Gender
+  dateOfBirth DateTime
+  nationality String
+
+  county        String
+  subCounty     String?
+  postalAddress String
+
+  guardianName  String?
+  guardianPhone String?
+
+  kcseIndexNumber String?
+  kcseGrade       String?
+
+  nationalId     String?
+  passportNumber String?
+
+  passportPhoto   String?
+  idCopy          String?
+  certificateFile String?
+
+  status ApplicationStatus @default(DRAFT)
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  processedById String?
+  processedBy   User?   @relation("ProcessedBy", fields: [processedById], references: [id])
+
+  student Student?
+
+  submittedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([courseId])
+  @@index([status])
+}
+
+model Student {
+  id String @id @default(cuid())
+
+  admissionNumber String @unique
+
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id])
+
+  applicationId String               @unique
+  application   AdmissionApplication @relation(fields: [applicationId], references: [id])
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  campusId String
+  campus   Campus @relation(fields: [campusId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Staff {
+  id String @id @default(cuid())
+
+  employeeNo String @unique
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model News {
+  id String @id @default(cuid())
+
+  title      String
+  slug       String  @unique
+  excerpt    String?
+  content    String
+  coverImage String?
+  category   String?
+  published  Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GalleryImage {
+  id       String      @id @default(cuid())
+  title    String?
+  image    String
+  category String?
+  span     GallerySpan @default(NORMAL)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id     String @id @default(cuid())
+  name   String
+  course String
+  quote  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactMessage {
+  id String @id @default(cuid())
+
+  name    String
+  email   String
+  phone   String?
+  subject String
+  message String
+
+  resolved Boolean @default(false)
+
+  createdAt DateTime @default(now())
+}

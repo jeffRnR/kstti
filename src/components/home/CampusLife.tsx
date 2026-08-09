@@ -35,7 +35,7 @@ const gallery = [
 export default function CampusLife() {
   return (
     <section className="section bg-[#F8F7F4]">
-      <div className="container-xl">
+      <div className="container-xl flex flex-col gap-12">
         <div className="text-center">
           <span className="tagline-center">Campus Life</span>
           <h2 className="section-title">Experience Life At KSTTI</h2>
@@ -51,23 +51,23 @@ export default function CampusLife() {
           Items use col/row span to create the Google Photos-style mosaic.
           On mobile collapses to a single column with fixed heights.
         */}
-        <div className="mt-14 hidden gap-4 md:grid md:grid-cols-3 md:[grid-auto-rows:220px]">
+        <div className="mt-14 hidden gap-2 md:grid md:grid-cols-3 md:[grid-auto-rows:220px]">
           {gallery.map((item) => (
             <article
               key={item.title}
-              className={`group relative overflow-hidden rounded-2xl bg-neutral-200 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(0,0,0,0.13)] ${item.span}`}
+              className={`group relative overflow-hidden bg-neutral-200 shadow-sm transition-all duration-300 ease-out hover:-translate-y- hover:shadow-[0_20px_48px_rgba(0,0,0,0.13)] ${item.span}`}
             >
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover transition duration-500 group-hover:scale-105"
+                className="object-cover transition duration-300 group-hover:scale-105"
                 sizes="(max-width:1280px) 50vw, 33vw"
               />
 
               {/* Hover label */}
-              <div className="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/80 to-transparent p-5 transition-transform duration-300 group-hover:translate-y-0">
-                <p className="font-[family:var(--font-serif)] text-base font-bold text-white">
+              <div className="absolute inset-x-0 bottom-0 left-2 translate-y-full bg-gradient-to-t from-black/80 to-transparent p-5 transition-transform duration-300 group-hover:translate-y-0">
+                <p className="font-[family:var(--font-serif)] text-base font-bold text-white p-4">
                   {item.title}
                 </p>
               </div>
@@ -80,7 +80,7 @@ export default function CampusLife() {
           {gallery.map((item) => (
             <article
               key={item.title}
-              className="group relative h-56 overflow-hidden rounded-2xl bg-neutral-200 shadow-sm"
+              className="group relative h-56 overflow-hidden bg-neutral-200 shadow-sm"
             >
               <Image
                 src={item.image}
@@ -89,7 +89,7 @@ export default function CampusLife() {
                 className="object-cover"
                 sizes="100vw"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+              <div className="absolute inset-x-0 bottom-0 left-2 bg-gradient-to-t from-black/70 to-transparent p-4">
                 <p className="font-[family:var(--font-serif)] text-base font-bold text-white">
                   {item.title}
                 </p>
@@ -99,8 +99,8 @@ export default function CampusLife() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/campus-life" className="btn-primary inline-flex items-center gap-2">
-            Explore Campus Life
+          <Link href="/gallery" className="btn-primary inline-flex items-center gap-2">
+            Gallery
             <ArrowRight size={17} />
           </Link>
         </div>

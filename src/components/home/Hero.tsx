@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
+    // Changed: relative py-20 lg:py-28 instead of rigid min-h-screen
     <section className="relative min-h-screen overflow-hidden bg-[#0A0A0A]">
 
       <video
@@ -20,15 +21,16 @@ export default function Hero() {
         />
       </video>
 
-      {/* Lighter overlay so video breathes */}
+      {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-[#0A0A0A]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_40%,rgba(0,0,0,0.35)_100%)]" />
       <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
 
-      <div className="container-xl relative flex min-h-screen items-center justify-center">
-        <div className="w-full max-w-4xl py-36 text-center">
-
-          <h1 className="font-[family:var(--font-script)] text-5xl font-bold text-[#E5AD23] md:text-6xl">
+      {/* Reduced fixed py-36 to py-20 to prevent overflow stacking */}
+      <div className="container-xl relative flex min-h-screen items-center justify-center !py-20 px-4">
+        <div className="w-full max-w-4xl text-center items-center justify-center flex flex-col gap-6 !px-4">
+ 
+          <h1 className="font-[family:var(--font-script)] text-5xl text-[#E5AD23] md:text-6xl justify-center flex items-center gap-2 !px-4">
             Empowering Minds For Tomorrow
           </h1>
 
@@ -47,24 +49,6 @@ export default function Hero() {
               <ArrowRight size={17} />
             </Link>
           </div>
-
-          <div className="mx-auto mt-20 flex flex-wrap justify-center gap-x-12 gap-y-6 border-t border-white/10 pt-12">
-            {[
-              { value: "2", label: "Campuses" },
-              { value: "100%", label: "Practical Learning" },
-              { value: "TVETA", label: "Accredited" },
-            ].map((item) => (
-              <div key={item.label} className="flex items-baseline gap-2.5">
-                <span className="font-[family:var(--font-serif)] text-3xl font-bold text-[#E5AD23]">
-                  {item.value}
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
         </div>
       </div>
     </section>

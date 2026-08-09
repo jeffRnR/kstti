@@ -75,12 +75,12 @@ body {
 /* ─── Section spacing ───────────────────────────────────── */
 
 .section {
-  padding-block: 6rem;
+  padding-block: 4rem;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding-block: 8rem;
+    padding-block: 6rem;
   }
 }
 
@@ -159,18 +159,37 @@ body {
 
 /* ─── Cards ─────────────────────────────────────────────── */
 
+/* Base — no hover, used for static content */
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
   border-radius: 1rem;
-  padding: 2.25rem;
+  padding: 2.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.13);
+/* Static alias — same as card, explicit intent */
+.card-static {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+/* Interactive — adds lift on hover for browsable/navigable cards */
+.card-hover {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* ─── Buttons ───────────────────────────────────────────── */
@@ -245,7 +264,7 @@ body {
 /* ─── Hero ──────────────────────────────────────────────── */
 
 .hero {
-  position: relative;
+  /* position: relative; */
   background-color: var(--color-ink);
   overflow: hidden;
 }

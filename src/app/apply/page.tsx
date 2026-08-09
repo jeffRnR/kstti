@@ -14,21 +14,27 @@ export default function ApplyPage() {
       <Navbar />
 
       <main>
-        <section className="hero-dark">
-          <div className="container-xl section text-center">
-            <p className="tagline">Admissions</p>
+        {/* ── Page header ─────────────────────────────────── */}
+        <section className="relative overflow-hidden bg-[#0A0A0A] py-24 md:py-32">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(229,173,35,0.07),transparent_60%)]" />
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
 
-            <h1 className="mt-4 text-4xl md:text-6xl">
+          <div className="container-xl relative text-center">
+            <span className="tagline-center text-[#E5AD23]">Admissions</span>
+
+            <h1 className="mt-6 font-[family:var(--font-serif)] text-4xl font-bold text-white md:text-5xl">
               Apply Online
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-300">
-              Complete your application to begin your admission process at KSTTI.
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-[1.85] text-neutral-400">
+              Complete the form below to begin your admission process at KSTTI.
+              Applications are reviewed within 3 working days.
             </p>
           </div>
         </section>
 
-        <section className="section">
+        {/* ── Form ────────────────────────────────────────── */}
+        <section className="section bg-[#F8F7F4]">
           <div className="container-md">
             <ApplicationForm />
           </div>

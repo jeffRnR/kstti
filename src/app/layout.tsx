@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Caveat, DM_Sans, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
+import IntakePopup from "@/components/home/IntakePopup";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
         className={`${dmSans.variable} ${libreBaskerville.variable} ${cinzel.variable} ${caveat.variable}`}
       >
         {children}
+        <IntakePopup />
       </body>
     </html>
   );

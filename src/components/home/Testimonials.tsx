@@ -1,64 +1,47 @@
-// src/components/home/Testimonials.tsx
-
 import { Quote } from "lucide-react";
+import prisma from "@/lib/prisma";
 
-const testimonials = [
-  {
-    name: "Student",
-    course: "ICT",
-    quote:
-      "The practical approach and supportive instructors helped me build confidence and job ready skills.",
-  },
-  {
-    name: "Graduate",
-    course: "Beauty Therapy",
-    quote:
-      "Small class sizes allowed me to receive individual guidance throughout my training.",
-  },
-  {
-    name: "Alumni",
-    course: "Building Technology",
-    quote:
-      "KSTTI prepared me with practical experience that made my transition into the workplace much easier.",
-  },
-];
+export default async function Testimonials() {
+  const testimonials = await prisma.testimonial.findMany({
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
 
-export default function Testimonials() {
   return (
-    <section className="section bg-[#0A0A0A]">
+    <section className="section">
       <div className="container-xl">
-        <div className="text-center">
-          <span className="tagline-center text-[#E5AD23]">Testimonials</span>
-          <h2 className="mt-4 font-[family:var(--font-serif)] text-4xl font-bold text-white md:text-[2.5rem]">
-            What Our Students Say
-          </h2>
-        </div>
+        <span className="tagline-center">Testimonials</span>
+
+        <h2 className="section-title">What Our Students Say</h2>
+
+        <p className="section-subtitle">
+          Hear from students and graduates who have built real careers through
+          training at KSTTI.
+        </p>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((item) => (
             <article
-              key={item.quote}
-              className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-7 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_rgba(0,0,0,0.3)]"
+              key={item.id}
+              className="card-hover flex flex-col gap-6"
             >
-              {/* Quote icon */}
-              <Quote size={28} className="mb-5 text-[#E5AD23]/60" />
+              <Quote size={26} className="mb-6 text-[#E5AD23]" />
 
-              {/* Quote text */}
-              <p className="flex-1 text-[1rem] leading-[1.85] text-neutral-300">
-                {item.quote}
+              <p className="flex-1 font-[family:var(--font-serif)] text-[1.05rem] italic leading-[1.9] text-[#1C1C1C]">
+                "{item.quote}"
               </p>
 
-              {/* Divider */}
-              <div className="my-6 h-px bg-white/10" />
+              <div className="my-6 h-px bg-[#E8E4DC]" />
 
-              {/* Attribution */}
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E5AD23]/15 font-[family:var(--font-serif)] text-base font-bold text-[#E5AD23]">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E5AD23] font-[family:var(--font-serif)] text-base font-bold text-black">
                   {item.name[0]}
                 </div>
+
                 <div>
-                  <p className="font-semibold text-white">{item.name}</p>
-                  <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">
+                  <p className="font-semibold text-[#0A0A0A]">{item.name}</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#C4931A]">
                     {item.course}
                   </p>
                 </div>

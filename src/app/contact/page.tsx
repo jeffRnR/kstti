@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata = {
   title: "Contact",
@@ -13,100 +14,80 @@ export default function ContactPage() {
       <Navbar />
 
       <main>
-        <section className="bg-neutral-950 text-white">
-          <div className="container-xl section text-center">
-            <p className="tagline mb-4">Get In Touch</p>
+        <section className="relative overflow-hidden bg-[#0A0A0A] !py-24 md:!py-32">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(229,173,35,0.07),transparent_60%)]" />
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
 
-            <h1 className="text-5xl md:text-6xl">
+          <div className="container-xl relative flex flex-col gap-6">
+            <span className="tagline-center text-[#E5AD23]">Get in Touch</span>
+
+            <h1 className="!mt-2 font-serif text-4xl font-bold text-white md:text-5xl">
               Contact KSTTI
             </h1>
 
-            <p className="mx-auto mt-8 max-w-3xl text-lg text-gray-300">
-              Have a question about admissions, courses, or campus life? Our
-              team is ready to assist you.
+            <p className="!mt-2 max-w-xl text-lg leading-[1.85] text-neutral-400">
+              Have a question about admissions, courses, or campus life?
+              Contact KSTTI and our team will assist you.
             </p>
           </div>
         </section>
 
         <section className="section">
-          <div className="container-xl grid gap-12 lg:grid-cols-2">
-            <div className="space-y-8">
-              <div className="card p-8">
-                <h2 className="mb-4 text-2xl">Kerugoya Campus</h2>
+          <div className="container-xl grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="!space-y-8">
+              <div className="card">
+                <p className="tagline">Campuses</p>
 
-                <p className="text-gray-600">
-                  Main Campus
-                </p>
+                <div className="!space-y-8">
+                  <div>
+                    <h2 className="text-2xl font-semibold text-neutral-900">
+                      Kerugoya Campus
+                    </h2>
+                    <p className="!mt-2 text-neutral-600 leading-relaxed">
+                      Kerugoya Campus
+                    </p>
+                  </div>
+
+                  <div className="border-t border-neutral-200 !pt-4">
+                    <h2 className="text-2xl font-semibold text-neutral-900">
+                      Ruai Campus
+                    </h2>
+                    <p className="!mt-2 text-neutral-600 leading-relaxed">
+                      Ruai Campus
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="card p-8">
-                <h2 className="mb-4 text-2xl">Ruai Campus</h2>
+              <div className="card">
+                <p className="tagline">Contact Details</p>
 
-                <p className="text-gray-600">
-                  Satellite Campus
-                </p>
-              </div>
+                <div className="!mt-8 !space-y-2 text-neutral-600">
+                  <p>
+                    <span className="font-medium text-neutral-900">
+                      Phone:
+                    </span>{" "}
+                    0713 255324 / 0798 469493
+                  </p>
 
-              <div className="card p-8">
-                <h2 className="mb-4 text-2xl">Contact Details</h2>
+                  <p>
+                    <span className="font-medium text-neutral-900">
+                      Email:
+                    </span>{" "}
+                    info@kstti.ac.ke
+                  </p>
 
-                <div className="space-y-3 text-gray-600">
-                  <p>Phone: +254 XXX XXX XXX</p>
-                  <p>Email: info@kstti.ac.ke</p>
-                  <p>Website: www.kstti.ac.ke</p>
+                  <p>
+                    <span className="font-medium text-neutral-900">
+                      Website:
+                    </span>{" "}
+                    www.kstti.ac.ke
+                  </p>
                 </div>
               </div>
             </div>
 
-            <form className="card space-y-6 p-8">
-              <div>
-                <label className="mb-2 block font-medium">
-                  Full Name
-                </label>
-
-                <input
-                  type="text"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-(--color-primary)"
-                />
-              </div>
-
-              <div>
-                <label className="mb-2 block font-medium">
-                  Email Address
-                </label>
-
-                <input
-                  type="email"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-(--color-primary)"
-                />
-              </div>
-
-              <div>
-                <label className="mb-2 block font-medium">
-                  Subject
-                </label>
-
-                <input
-                  type="text"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-(--color-primary)"
-                />
-              </div>
-
-              <div>
-                <label className="mb-2 block font-medium">
-                  Message
-                </label>
-
-                <textarea
-                  rows={6}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-(--color-primary)"
-                />
-              </div>
-
-              <button type="submit" className="btn-primary">
-                Send Message
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </section>
       </main>

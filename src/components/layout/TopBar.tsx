@@ -26,7 +26,7 @@ export default function TopBar() {
 
         <div className="flex items-center gap-4">
           {/* TVETA accreditation badge */}
-          <div className="flex items-center gap-1.5 rounded-xl border border-[#E5AD23]/25 bg-[#E5AD23]/10 px-4 py-3">
+          <div className="flex items-center gap-1.5 px-4 py-3">
             <BadgeCheck size={12} className="text-[#E5AD23]" />
             <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#E5AD23]">
               TVETA Accredited

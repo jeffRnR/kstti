@@ -6,7 +6,6 @@ import Hero from "@/components/home/Hero";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FeaturedCourses from "@/components/home/FeaturedCourses";
 import Departments from "@/components/home/Departments";
-import Stats from "@/components/home/Stats";
 import CampusLife from "@/components/home/CampusLife";
 import LatestNews from "@/components/home/LatestNews";
 import Testimonials from "@/components/home/Testimonials";
@@ -25,7 +24,6 @@ export default function HomePage() {
         <Departments />
         <FeaturedCourses />
         <Campuses />
-        <Stats />
         <CampusLife />
         <LatestNews />
         <Testimonials />

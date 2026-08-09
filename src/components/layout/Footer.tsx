@@ -6,11 +6,11 @@ import { Mail, MapPin, Phone } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-[#0A0A0A] text-white">
-      <div className="container-xl grid gap-12 py-20 md:grid-cols-[1.4fr_0.8fr_1fr]">
+      <div className="container-xl grid gap-12 !py-20 md:grid-cols-[1.4fr_0.8fr_1fr]">
 
         {/* Brand column */}
         <div>
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 !mb-5">
             <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E5AD23] text-base font-black text-black">
               K
             </span>
@@ -32,7 +32,7 @@ export default function Footer() {
 
         {/* Quick links */}
         <div>
-          <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
+          <h3 className="!mb-5 text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
             Quick Links
           </h3>
 
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
+          <h3 className="!mb-5 text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
             Contact Us
           </h3>
 
@@ -84,7 +84,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/8 py-6">
+      <div className="border-t border-white/8 !py-6">
         <div className="container-xl flex flex-col items-center justify-between gap-3 text-center text-sm text-neutral-600 sm:flex-row">
           <span>© {new Date().getFullYear()} KSTTI. All Rights Reserved.</span>
           <span className="text-xs uppercase tracking-wider">
