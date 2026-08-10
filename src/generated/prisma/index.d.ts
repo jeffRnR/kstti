@@ -138,6 +138,23 @@ export const GallerySpan: {
 
 export type GallerySpan = (typeof GallerySpan)[keyof typeof GallerySpan]
 
+
+export const ModeOfStudy: {
+  FULL_TIME: 'FULL_TIME',
+  PART_TIME: 'PART_TIME'
+};
+
+export type ModeOfStudy = (typeof ModeOfStudy)[keyof typeof ModeOfStudy]
+
+
+export const Intake: {
+  JANUARY: 'JANUARY',
+  MAY: 'MAY',
+  SEPTEMBER: 'SEPTEMBER'
+};
+
+export type Intake = (typeof Intake)[keyof typeof Intake]
+
 }
 
 export type CampusCode = $Enums.CampusCode
@@ -163,6 +180,14 @@ export const IntakeStatus: typeof $Enums.IntakeStatus
 export type GallerySpan = $Enums.GallerySpan
 
 export const GallerySpan: typeof $Enums.GallerySpan
+
+export type ModeOfStudy = $Enums.ModeOfStudy
+
+export const ModeOfStudy: typeof $Enums.ModeOfStudy
+
+export type Intake = $Enums.Intake
+
+export const Intake: typeof $Enums.Intake
 
 /**
  * ##  Prisma Client ʲˢ
@@ -8066,6 +8091,8 @@ export namespace Prisma {
     status: $Enums.ApplicationStatus | null
     courseId: string | null
     processedById: string | null
+    modeOfStudy: $Enums.ModeOfStudy | null
+    intake: $Enums.Intake | null
     submittedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8097,6 +8124,8 @@ export namespace Prisma {
     status: $Enums.ApplicationStatus | null
     courseId: string | null
     processedById: string | null
+    modeOfStudy: $Enums.ModeOfStudy | null
+    intake: $Enums.Intake | null
     submittedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8128,6 +8157,8 @@ export namespace Prisma {
     status: number
     courseId: number
     processedById: number
+    modeOfStudy: number
+    intake: number
     submittedAt: number
     createdAt: number
     updatedAt: number
@@ -8161,6 +8192,8 @@ export namespace Prisma {
     status?: true
     courseId?: true
     processedById?: true
+    modeOfStudy?: true
+    intake?: true
     submittedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -8192,6 +8225,8 @@ export namespace Prisma {
     status?: true
     courseId?: true
     processedById?: true
+    modeOfStudy?: true
+    intake?: true
     submittedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -8223,6 +8258,8 @@ export namespace Prisma {
     status?: true
     courseId?: true
     processedById?: true
+    modeOfStudy?: true
+    intake?: true
     submittedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -8327,6 +8364,8 @@ export namespace Prisma {
     status: $Enums.ApplicationStatus
     courseId: string
     processedById: string | null
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -8375,6 +8414,8 @@ export namespace Prisma {
     status?: boolean
     courseId?: boolean
     processedById?: boolean
+    modeOfStudy?: boolean
+    intake?: boolean
     submittedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8409,6 +8450,8 @@ export namespace Prisma {
     status?: boolean
     courseId?: boolean
     processedById?: boolean
+    modeOfStudy?: boolean
+    intake?: boolean
     submittedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8442,6 +8485,8 @@ export namespace Prisma {
     status?: boolean
     courseId?: boolean
     processedById?: boolean
+    modeOfStudy?: boolean
+    intake?: boolean
     submittedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8475,12 +8520,14 @@ export namespace Prisma {
     status?: boolean
     courseId?: boolean
     processedById?: boolean
+    modeOfStudy?: boolean
+    intake?: boolean
     submittedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AdmissionApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "applicationNumber" | "firstName" | "middleName" | "lastName" | "email" | "phone" | "gender" | "dateOfBirth" | "nationality" | "county" | "subCounty" | "postalAddress" | "guardianName" | "guardianPhone" | "kcseIndexNumber" | "kcseGrade" | "nationalId" | "passportNumber" | "passportPhoto" | "idCopy" | "certificateFile" | "status" | "courseId" | "processedById" | "submittedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["admissionApplication"]>
+  export type AdmissionApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "applicationNumber" | "firstName" | "middleName" | "lastName" | "email" | "phone" | "gender" | "dateOfBirth" | "nationality" | "county" | "subCounty" | "postalAddress" | "guardianName" | "guardianPhone" | "kcseIndexNumber" | "kcseGrade" | "nationalId" | "passportNumber" | "passportPhoto" | "idCopy" | "certificateFile" | "status" | "courseId" | "processedById" | "modeOfStudy" | "intake" | "submittedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["admissionApplication"]>
   export type AdmissionApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     course?: boolean | CourseDefaultArgs<ExtArgs>
     processedBy?: boolean | AdmissionApplication$processedByArgs<ExtArgs>
@@ -8528,6 +8575,8 @@ export namespace Prisma {
       status: $Enums.ApplicationStatus
       courseId: string
       processedById: string | null
+      modeOfStudy: $Enums.ModeOfStudy
+      intake: $Enums.Intake
       submittedAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -8982,6 +9031,8 @@ export namespace Prisma {
     readonly status: FieldRef<"AdmissionApplication", 'ApplicationStatus'>
     readonly courseId: FieldRef<"AdmissionApplication", 'String'>
     readonly processedById: FieldRef<"AdmissionApplication", 'String'>
+    readonly modeOfStudy: FieldRef<"AdmissionApplication", 'ModeOfStudy'>
+    readonly intake: FieldRef<"AdmissionApplication", 'Intake'>
     readonly submittedAt: FieldRef<"AdmissionApplication", 'DateTime'>
     readonly createdAt: FieldRef<"AdmissionApplication", 'DateTime'>
     readonly updatedAt: FieldRef<"AdmissionApplication", 'DateTime'>
@@ -15886,6 +15937,8 @@ export namespace Prisma {
     status: 'status',
     courseId: 'courseId',
     processedById: 'processedById',
+    modeOfStudy: 'modeOfStudy',
+    intake: 'intake',
     submittedAt: 'submittedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -16103,6 +16156,34 @@ export namespace Prisma {
    * Reference to a field of type 'ApplicationStatus[]'
    */
   export type ListEnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ModeOfStudy'
+   */
+  export type EnumModeOfStudyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ModeOfStudy'>
+    
+
+
+  /**
+   * Reference to a field of type 'ModeOfStudy[]'
+   */
+  export type ListEnumModeOfStudyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ModeOfStudy[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Intake'
+   */
+  export type EnumIntakeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Intake'>
+    
+
+
+  /**
+   * Reference to a field of type 'Intake[]'
+   */
+  export type ListEnumIntakeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Intake[]'>
     
 
 
@@ -16589,6 +16670,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusFilter<"AdmissionApplication"> | $Enums.ApplicationStatus
     courseId?: StringFilter<"AdmissionApplication"> | string
     processedById?: StringNullableFilter<"AdmissionApplication"> | string | null
+    modeOfStudy?: EnumModeOfStudyFilter<"AdmissionApplication"> | $Enums.ModeOfStudy
+    intake?: EnumIntakeFilter<"AdmissionApplication"> | $Enums.Intake
     submittedAt?: DateTimeNullableFilter<"AdmissionApplication"> | Date | string | null
     createdAt?: DateTimeFilter<"AdmissionApplication"> | Date | string
     updatedAt?: DateTimeFilter<"AdmissionApplication"> | Date | string
@@ -16623,6 +16706,8 @@ export namespace Prisma {
     status?: SortOrder
     courseId?: SortOrder
     processedById?: SortOrderInput | SortOrder
+    modeOfStudy?: SortOrder
+    intake?: SortOrder
     submittedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16660,6 +16745,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusFilter<"AdmissionApplication"> | $Enums.ApplicationStatus
     courseId?: StringFilter<"AdmissionApplication"> | string
     processedById?: StringNullableFilter<"AdmissionApplication"> | string | null
+    modeOfStudy?: EnumModeOfStudyFilter<"AdmissionApplication"> | $Enums.ModeOfStudy
+    intake?: EnumIntakeFilter<"AdmissionApplication"> | $Enums.Intake
     submittedAt?: DateTimeNullableFilter<"AdmissionApplication"> | Date | string | null
     createdAt?: DateTimeFilter<"AdmissionApplication"> | Date | string
     updatedAt?: DateTimeFilter<"AdmissionApplication"> | Date | string
@@ -16694,6 +16781,8 @@ export namespace Prisma {
     status?: SortOrder
     courseId?: SortOrder
     processedById?: SortOrderInput | SortOrder
+    modeOfStudy?: SortOrder
+    intake?: SortOrder
     submittedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16731,6 +16820,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusWithAggregatesFilter<"AdmissionApplication"> | $Enums.ApplicationStatus
     courseId?: StringWithAggregatesFilter<"AdmissionApplication"> | string
     processedById?: StringNullableWithAggregatesFilter<"AdmissionApplication"> | string | null
+    modeOfStudy?: EnumModeOfStudyWithAggregatesFilter<"AdmissionApplication"> | $Enums.ModeOfStudy
+    intake?: EnumIntakeWithAggregatesFilter<"AdmissionApplication"> | $Enums.Intake
     submittedAt?: DateTimeNullableWithAggregatesFilter<"AdmissionApplication"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"AdmissionApplication"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdmissionApplication"> | Date | string
@@ -17632,6 +17723,8 @@ export namespace Prisma {
     idCopy?: string | null
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17666,6 +17759,8 @@ export namespace Prisma {
     status?: $Enums.ApplicationStatus
     courseId: string
     processedById?: string | null
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17696,6 +17791,8 @@ export namespace Prisma {
     idCopy?: NullableStringFieldUpdateOperationsInput | string | null
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17730,6 +17827,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     courseId?: StringFieldUpdateOperationsInput | string
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17762,6 +17861,8 @@ export namespace Prisma {
     status?: $Enums.ApplicationStatus
     courseId: string
     processedById?: string | null
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17791,6 +17892,8 @@ export namespace Prisma {
     idCopy?: NullableStringFieldUpdateOperationsInput | string | null
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17822,6 +17925,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     courseId?: StringFieldUpdateOperationsInput | string
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18678,6 +18783,20 @@ export namespace Prisma {
     not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
   }
 
+  export type EnumModeOfStudyFilter<$PrismaModel = never> = {
+    equals?: $Enums.ModeOfStudy | EnumModeOfStudyFieldRefInput<$PrismaModel>
+    in?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeOfStudyFilter<$PrismaModel> | $Enums.ModeOfStudy
+  }
+
+  export type EnumIntakeFilter<$PrismaModel = never> = {
+    equals?: $Enums.Intake | EnumIntakeFieldRefInput<$PrismaModel>
+    in?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIntakeFilter<$PrismaModel> | $Enums.Intake
+  }
+
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -18725,6 +18844,8 @@ export namespace Prisma {
     status?: SortOrder
     courseId?: SortOrder
     processedById?: SortOrder
+    modeOfStudy?: SortOrder
+    intake?: SortOrder
     submittedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18756,6 +18877,8 @@ export namespace Prisma {
     status?: SortOrder
     courseId?: SortOrder
     processedById?: SortOrder
+    modeOfStudy?: SortOrder
+    intake?: SortOrder
     submittedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18787,6 +18910,8 @@ export namespace Prisma {
     status?: SortOrder
     courseId?: SortOrder
     processedById?: SortOrder
+    modeOfStudy?: SortOrder
+    intake?: SortOrder
     submittedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18810,6 +18935,26 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumApplicationStatusFilter<$PrismaModel>
     _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
+  }
+
+  export type EnumModeOfStudyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ModeOfStudy | EnumModeOfStudyFieldRefInput<$PrismaModel>
+    in?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeOfStudyWithAggregatesFilter<$PrismaModel> | $Enums.ModeOfStudy
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumModeOfStudyFilter<$PrismaModel>
+    _max?: NestedEnumModeOfStudyFilter<$PrismaModel>
+  }
+
+  export type EnumIntakeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Intake | EnumIntakeFieldRefInput<$PrismaModel>
+    in?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIntakeWithAggregatesFilter<$PrismaModel> | $Enums.Intake
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumIntakeFilter<$PrismaModel>
+    _max?: NestedEnumIntakeFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19551,6 +19696,14 @@ export namespace Prisma {
     set?: $Enums.ApplicationStatus
   }
 
+  export type EnumModeOfStudyFieldUpdateOperationsInput = {
+    set?: $Enums.ModeOfStudy
+  }
+
+  export type EnumIntakeFieldUpdateOperationsInput = {
+    set?: $Enums.Intake
+  }
+
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
@@ -19856,6 +20009,20 @@ export namespace Prisma {
     not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
   }
 
+  export type NestedEnumModeOfStudyFilter<$PrismaModel = never> = {
+    equals?: $Enums.ModeOfStudy | EnumModeOfStudyFieldRefInput<$PrismaModel>
+    in?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeOfStudyFilter<$PrismaModel> | $Enums.ModeOfStudy
+  }
+
+  export type NestedEnumIntakeFilter<$PrismaModel = never> = {
+    equals?: $Enums.Intake | EnumIntakeFieldRefInput<$PrismaModel>
+    in?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIntakeFilter<$PrismaModel> | $Enums.Intake
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -19885,6 +20052,26 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumApplicationStatusFilter<$PrismaModel>
     _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumModeOfStudyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ModeOfStudy | EnumModeOfStudyFieldRefInput<$PrismaModel>
+    in?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ModeOfStudy[] | ListEnumModeOfStudyFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeOfStudyWithAggregatesFilter<$PrismaModel> | $Enums.ModeOfStudy
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumModeOfStudyFilter<$PrismaModel>
+    _max?: NestedEnumModeOfStudyFilter<$PrismaModel>
+  }
+
+  export type NestedEnumIntakeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Intake | EnumIntakeFieldRefInput<$PrismaModel>
+    in?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Intake[] | ListEnumIntakeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIntakeWithAggregatesFilter<$PrismaModel> | $Enums.Intake
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumIntakeFilter<$PrismaModel>
+    _max?: NestedEnumIntakeFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19942,6 +20129,8 @@ export namespace Prisma {
     idCopy?: string | null
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19974,6 +20163,8 @@ export namespace Prisma {
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
     courseId: string
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20075,6 +20266,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusFilter<"AdmissionApplication"> | $Enums.ApplicationStatus
     courseId?: StringFilter<"AdmissionApplication"> | string
     processedById?: StringNullableFilter<"AdmissionApplication"> | string | null
+    modeOfStudy?: EnumModeOfStudyFilter<"AdmissionApplication"> | $Enums.ModeOfStudy
+    intake?: EnumIntakeFilter<"AdmissionApplication"> | $Enums.Intake
     submittedAt?: DateTimeNullableFilter<"AdmissionApplication"> | Date | string | null
     createdAt?: DateTimeFilter<"AdmissionApplication"> | Date | string
     updatedAt?: DateTimeFilter<"AdmissionApplication"> | Date | string
@@ -20670,6 +20863,8 @@ export namespace Prisma {
     idCopy?: string | null
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20702,6 +20897,8 @@ export namespace Prisma {
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
     processedById?: string | null
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21141,6 +21338,8 @@ export namespace Prisma {
     idCopy?: string | null
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21174,6 +21373,8 @@ export namespace Prisma {
     status?: $Enums.ApplicationStatus
     courseId: string
     processedById?: string | null
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21348,6 +21549,8 @@ export namespace Prisma {
     idCopy?: NullableStringFieldUpdateOperationsInput | string | null
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21381,6 +21584,8 @@ export namespace Prisma {
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     courseId?: StringFieldUpdateOperationsInput | string
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21585,6 +21790,8 @@ export namespace Prisma {
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
     courseId: string
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21614,6 +21821,8 @@ export namespace Prisma {
     idCopy?: NullableStringFieldUpdateOperationsInput | string | null
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21646,6 +21855,8 @@ export namespace Prisma {
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     courseId?: StringFieldUpdateOperationsInput | string
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21677,6 +21888,8 @@ export namespace Prisma {
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     courseId?: StringFieldUpdateOperationsInput | string
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21935,6 +22148,8 @@ export namespace Prisma {
     certificateFile?: string | null
     status?: $Enums.ApplicationStatus
     processedById?: string | null
+    modeOfStudy: $Enums.ModeOfStudy
+    intake: $Enums.Intake
     submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21973,6 +22188,8 @@ export namespace Prisma {
     idCopy?: NullableStringFieldUpdateOperationsInput | string | null
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22005,6 +22222,8 @@ export namespace Prisma {
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22036,6 +22255,8 @@ export namespace Prisma {
     certificateFile?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    modeOfStudy?: EnumModeOfStudyFieldUpdateOperationsInput | $Enums.ModeOfStudy
+    intake?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

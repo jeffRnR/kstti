@@ -60,9 +60,16 @@ export default function AboutPage() {
 
       <main>
         {/* ── Page header ─────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-[#0A0A0A] !py-24 md:py-32">
+        <section className="relative overflow-hidden bg-[#0A0A0A] !py-24 md:!py-32">
+          <div
+            className="absolute inset-0 bg-cover bg-center object-cover"
+            style={{
+              backgroundImage: "url('/random.jpg')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/75" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(229,173,35,0.07),transparent_60%)]" />
-          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent inset-0" />
 
           <div className="container-xl relative flex flex-col gap-6">
             <span className="tagline-center text-[#E5AD23]">Who We Are</span>
@@ -109,7 +116,7 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div>
+                <div className="flex justify-center sm:flex sm:justify-start">
                   <Link href="/apply" className="btn-primary mt-10">
                     Apply Now
                     <ArrowRight size={17} />

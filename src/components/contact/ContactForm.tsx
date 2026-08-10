@@ -99,7 +99,7 @@ export default function ContactForm() {
           />
         </div>
 
-        <div className="!pt-6">
+        <div className="!pt-6 flex items-center sm:justify-start justify-center">
           <button
             type="submit"
             disabled={loading}

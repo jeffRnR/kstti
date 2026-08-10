@@ -59,17 +59,17 @@ export default function ApplicationForm() {
 
   if (loading) {
     return (
-      <div className="card flex items-center justify-center py-20 text-center">
+      <div className="card flex items-center justify-center !py-20 text-center">
         <div>
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#E5AD23] border-t-transparent" />
-          <p className="mt-5 text-sm font-medium text-neutral-500">Loading application form...</p>
+          <div className="!mx-auto !h-8 !w-8 animate-spin rounded-full border-2 border-[#E5AD23] border-t-transparent" />
+          <p className="!mt-5 text-sm font-medium text-neutral-500">Loading application form...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="!space-y-6">
 
       <FormSection
         step="01"
@@ -80,8 +80,8 @@ export default function ApplicationForm() {
           <Field label="First Name" name="firstName" required />
           <Field label="Middle Name" name="middleName" />
           <Field label="Last Name" name="lastName" required />
-          <Field label="Email Address" name="email" type="email" required />
-          <Field label="Phone Number" name="phone" type="tel" required />
+          <Field label="Email Address" name="email" type="email" />
+          <Field label="Phone Number" name="phone" type="tel" />
           <SelectField label="Gender" name="gender" required>
             <option value="">Select gender</option>
             <option value="MALE">Male</option>
@@ -89,11 +89,17 @@ export default function ApplicationForm() {
             <option value="OTHER">Other</option>
           </SelectField>
           <Field label="Date of Birth" name="dateOfBirth" type="date" required />
-          <Field label="Nationality" name="nationality" required />
+          {/* <Field label="Nationality" name="nationality" required /> */}
           <Field label="County" name="county" required />
-          <Field label="Sub County" name="subCounty" />
-          <Field label="Postal Address" name="postalAddress" required />
+          <Field label="Postal Address" name="postalAddress" />
           <Field label="National ID / Passport Number" name="nationalId" />
+          <SelectField label="Marital Status" name="maritalStatus" required>
+            <option value="">Select marital status</option>
+            <option value="SINGLE">Single</option>
+            <option value="MARRIED">Married</option>
+            <option value="DIVORCED">Divorced</option>
+            <option value="WIDOWED">Widowed</option>
+          </SelectField>
         </div>
       </FormSection>
 
@@ -103,12 +109,15 @@ export default function ApplicationForm() {
         description="Tell us about your academic background and preferred course."
       >
         <div className="grid gap-7 md:grid-cols-2">
-          <Field label="KCSE Index Number" name="kcseIndexNumber" />
-          <Field label="KCSE Grade" name="kcseGrade" />
+          <Field label="KCSE Secondary School" name="kcseSchool" required />
+          <Field label="KCSE Grade" name="kcseGrade" required />
+          <Field label="KCSE Year Completed" name="kcseYear" type="number" required />
           <SelectField label="Preferred Campus" name="campusId" required>
             <option value="">Select campus</option>
             {campuses.map((campus) => (
-              <option key={campus.id} value={campus.id}>{campus.name}</option>
+              <option key={campus.id} value={campus.id}>
+                {campus.name}
+              </option>
             ))}
           </SelectField>
           <SelectField label="Course" name="courseId" required>
@@ -119,6 +128,17 @@ export default function ApplicationForm() {
               </option>
             ))}
           </SelectField>
+          <SelectField label="Mode of Study" name="modeOfStudy" required>
+            <option value="">Select mode of study</option>
+            <option value="FULL_TIME">Full Time</option>
+            <option value="PART_TIME">Part Time</option>
+          </SelectField>
+          <SelectField label="Preferred Intake" name="intake" required>
+            <option value="">Select intake</option>
+            <option value="JANUARY">January</option>
+            <option value="MAY">May</option>
+            <option value="SEPTEMBER">September</option>
+          </SelectField>
         </div>
       </FormSection>
 
@@ -128,8 +148,10 @@ export default function ApplicationForm() {
         description="Emergency contact and guardian details."
       >
         <div className="grid gap-7 md:grid-cols-2">
-          <Field label="Guardian Name" name="guardianName" />
-          <Field label="Guardian Phone" name="guardianPhone" type="tel" />
+          <Field label="Guardian Name" name="guardianName" required />
+          <Field label="Relationship" name="guardianRelationship" required />
+          <Field label="Guardian Phone" name="guardianPhone" type="tel" required />
+          <Field label="Address" name="guardianAddress" />
         </div>
       </FormSection>
 
@@ -141,23 +163,26 @@ export default function ApplicationForm() {
         <div className="grid gap-7 md:grid-cols-3">
           <FileField label="Passport Photo" name="passportPhoto" />
           <FileField label="ID Copy" name="idCopy" />
-          <FileField label="Certificate" name="certificateFile" />
+          <FileField label="Birth Certificate" name="birthCertificate" />
+          <FileField label="KCSE Certificate / Result Slip / Leaving Certificate" name="kcseCertificate" />
         </div>
       </FormSection>
 
       {message && (
         <div
-          className={`rounded-xl border p-5 text-sm font-medium ${
-            message.type === "success"
+          className={`rounded-xl border !p-5 text-sm font-medium ${message.type === "success"
               ? "border-green-200 bg-green-50 text-green-800"
               : "border-red-200 bg-red-50 text-red-800"
-          }`}
+            }`}
         >
           {message.text}
         </div>
       )}
 
-      <div className="flex items-center gap-5 pt-4">
+      <div className="flex flex-col items-center gap-5 !pt-4">
+        <p className="text-xs text-neutral-400">
+          Fields marked <span className="text-red-500">*</span> are required.
+        </p>
         <button
           type="submit"
           disabled={submitting}
@@ -172,9 +197,6 @@ export default function ApplicationForm() {
             "Submit Application"
           )}
         </button>
-        <p className="text-xs text-neutral-400">
-          Fields marked <span className="text-red-500">*</span> are required.
-        </p>
       </div>
     </form>
   );
@@ -193,7 +215,7 @@ function FormSection({
 }) {
   return (
     <div className="card-static">
-      <div className="mb-9 flex items-start gap-5 border-b border-[#E8E4DC] pb-9">
+      <div className="!mb-9 flex items-start gap-5 border-b border-[#E8E4DC] !pb-9">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#E5AD23] font-[family:var(--font-serif)] text-sm font-bold text-black">
           {step}
         </span>
@@ -201,7 +223,7 @@ function FormSection({
           <h2 className="font-[family:var(--font-serif)] text-xl font-bold text-[#0A0A0A]">
             {title}
           </h2>
-          <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">{description}</p>
+          <p className="!mt-1.5 text-sm leading-relaxed text-neutral-500">{description}</p>
         </div>
       </div>
       {children}
@@ -224,14 +246,14 @@ function Field({
     <div className="flex flex-col gap-2">
       <label htmlFor={name} className="text-sm font-semibold text-[#1C1C1C]">
         {label}
-        {required && <span className="ml-1 text-red-500">*</span>}
+        {required && <span className="!ml-1 text-red-500">*</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-lg border border-[#D4CFC4] bg-white px-4 py-3 text-sm text-[#1C1C1C] outline-none focus:border-[#E5AD23] focus:ring-2 focus:ring-[#E5AD23]/20 placeholder:text-neutral-400"
+        className="w-full rounded-lg border border-[#D4CFC4] bg-white !px-4 !py-3 text-sm text-[#1C1C1C] outline-none focus:border-[#E5AD23] focus:ring-2 focus:ring-[#E5AD23]/20 placeholder:text-neutral-400"
       />
     </div>
   );
@@ -252,13 +274,13 @@ function SelectField({
     <div className="flex flex-col gap-2">
       <label htmlFor={name} className="text-sm font-semibold text-[#1C1C1C]">
         {label}
-        {required && <span className="ml-1 text-red-500">*</span>}
+        {required && <span className="!ml-1 text-red-500">*</span>}
       </label>
       <select
         id={name}
         name={name}
         required={required}
-        className="w-full rounded-lg border border-[#D4CFC4] bg-white px-4 py-3 text-sm text-[#1C1C1C] outline-none focus:border-[#E5AD23] focus:ring-2 focus:ring-[#E5AD23]/20"
+        className="w-full rounded-lg border border-[#D4CFC4] bg-white !px-4 !py-3 text-sm text-[#1C1C1C] outline-none focus:border-[#E5AD23] focus:ring-2 focus:ring-[#E5AD23]/20"
       >
         {children}
       </select>
@@ -272,9 +294,9 @@ function FileField({ label, name }: { label: string; name: string }) {
       <label htmlFor={name} className="text-sm font-semibold text-[#1C1C1C]">
         {label}
       </label>
-      <div className="relative flex min-h-[100px] w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[#D4CFC4] bg-[#F8F7F4] px-4 py-8 text-center">
+      <div className="relative flex min-h-[100px] w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[#D4CFC4] bg-[#F8F7F4] !px-4 !py-8 text-center">
         <p className="text-xs font-semibold text-neutral-500">Click to upload</p>
-        <p className="mt-1.5 text-[0.7rem] text-neutral-400">JPG, PNG or PDF</p>
+        <p className="!mt-1.5 text-[0.7rem] text-neutral-400">JPG, PNG or PDF</p>
         <input
           id={name}
           name={name}

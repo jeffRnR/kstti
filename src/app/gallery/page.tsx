@@ -25,8 +25,15 @@ export default async function GalleryPage() {
 
       <main>
         <section className="relative overflow-hidden bg-[#0A0A0A]">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(229,173,35,0.08),transparent_55%)]" />
-          <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/40 to-transparent" />
+          <div
+            className="absolute inset-0 bg-cover bg-center object-cover"
+            style={{
+              backgroundImage: "url('/random.jpg')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(229,173,35,0.07),transparent_60%)]" />
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
 
           <div className="container-xl relative !py-24 text-center md:!py-32">
             <span className="tagline text-[#E5AD23]">Campus Life</span>

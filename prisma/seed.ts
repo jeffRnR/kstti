@@ -15,36 +15,132 @@ if (!connectionString) {
   throw new Error("DATABASE_URL is not defined");
 }
 
-const adapter = new PrismaPg({
-  connectionString,
-});
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
 
-const prisma = new PrismaClient({
-  adapter,
-});
+// -----------------------------------------------------------------------------
+// TYPES
+// -----------------------------------------------------------------------------
+
+type CourseSeed = {
+  name: string;
+  department: string;
+  intakeStatus: IntakeStatus;
+  duration: string;
+  feePerSemester: string;
+};
+
+// -----------------------------------------------------------------------------
+// DATA
+// -----------------------------------------------------------------------------
+
+const COURSES: CourseSeed[] = [
+  // ── School of Cosmetology, Fashion & Design ──────────────────────────────
+  { name: "Diploma in Cosmetology", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1½ Years", feePerSemester: "KES 17,500" },
+  { name: "Certificate in Cosmetology", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Diploma in Hairdressing", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Certificate in Hairdressing", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Artisan in Hairdressing", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Diploma in Beauty Therapy", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Certificate in Beauty Therapy", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Artisan in Beauty Therapy", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Adv. Hairdressing & Beauty Therapy", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 20,000" },
+  { name: "Diploma in Fashion & Design", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "2 Years", feePerSemester: "KES 17,500" },
+  { name: "Certificate in Fashion & Design", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1½ Years", feePerSemester: "KES 17,500" },
+  { name: "Artisan in Fashion & Design", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Interior Design", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "9 Months", feePerSemester: "KES 17,500" },
+  { name: "Trainer of Trainers", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "9 Months", feePerSemester: "KES 17,500" },
+  { name: "Full Body Massage", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Braiding", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Nail Technology", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Dreadlocks", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Barbering & Haircutting", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Facial Treatment", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Make Up", department: "School of Cosmetology, Fashion & Design", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+
+  // ── School of ICT Computing & Informatics ────────────────────────────────
+  { name: "Diploma in ICT", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "2 Years", feePerSemester: "KES 17,500" },
+  { name: "Certificate in ICT", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "1½ Years", feePerSemester: "KES 17,500" },
+  { name: "Artisan in ICT", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "3 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Graphic Design", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "2 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Web Design & Development", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "2 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Software Development", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "2 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Mobile App Development", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "2 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Computer Repair & Maintenance", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "1 Semester", feePerSemester: "KES 17,500" },
+  { name: "Computer Packages", department: "School of ICT Computing & Informatics", intakeStatus: IntakeStatus.OPEN, duration: "1 Month", feePerSemester: "KES 5,000" },
+
+  // ── School of Building & Civil Engineering ───────────────────────────────
+  { name: "Plumbing Certificate Level 5", department: "School of Building & Civil Engineering", intakeStatus: IntakeStatus.OPEN, duration: "4 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Artisan in Plumbing", department: "School of Building & Civil Engineering", intakeStatus: IntakeStatus.OPEN, duration: "4 Semesters", feePerSemester: "KES 17,500" },
+  { name: "Plumbing Open", department: "School of Building & Civil Engineering", intakeStatus: IntakeStatus.OPEN, duration: "6 Months", feePerSemester: "KES 17,500" },
+  { name: "Carpentry and Joinery", department: "School of Building & Civil Engineering", intakeStatus: IntakeStatus.OPEN, duration: "1½ Years", feePerSemester: "KES 17,500" },
+  { name: "Artisan in Carpentry & Joinery", department: "School of Building & Civil Engineering", intakeStatus: IntakeStatus.OPEN, duration: "9 Months", feePerSemester: "KES 17,500" },
+  { name: "Painting & Decorations", department: "School of Building & Civil Engineering", intakeStatus: IntakeStatus.OPEN, duration: "9 Months", feePerSemester: "KES 17,500" },
+
+  // ── School of Electrical & Electronic Engineering ────────────────────────
+  { name: "Diploma in Electrical & Electronic Engineering (Power Option)", department: "School of Electrical & Electronic Engineering", intakeStatus: IntakeStatus.OPEN, duration: "2 Years", feePerSemester: "KES 17,500" },
+  { name: "Certificate in Electrical Installation", department: "School of Electrical & Electronic Engineering", intakeStatus: IntakeStatus.OPEN, duration: "1 Year", feePerSemester: "KES 17,500" },
+  { name: "Electrical Wireman", department: "School of Electrical & Electronic Engineering", intakeStatus: IntakeStatus.OPEN, duration: "1½ Years", feePerSemester: "KES 17,500" },
+  { name: "CCTV Installation", department: "School of Electrical & Electronic Engineering", intakeStatus: IntakeStatus.OPEN, duration: "6 Months", feePerSemester: "KES 17,500" },
+
+  // ── School of Hospitality ────────────────────────────────────────────────
+  { name: "Pastry & Cake Making", department: "School of Hospitality", intakeStatus: IntakeStatus.OPEN, duration: "6 Months", feePerSemester: "KES 20,000" },
+  { name: "Barista & Bartending", department: "School of Hospitality", intakeStatus: IntakeStatus.OPEN, duration: "6 Months", feePerSemester: "KES 20,000" },
+  { name: "Pies & Dessert", department: "School of Hospitality", intakeStatus: IntakeStatus.OPEN, duration: "3 Months", feePerSemester: "KES 20,000" },
+
+  // ── School of Music ──────────────────────────────────────────────────────
+  { name: "Vocal Training", department: "School of Music", intakeStatus: IntakeStatus.OPEN, duration: "3 Months", feePerSemester: "KES 17,500" },
+  { name: "Musical Instruments (Piano)", department: "School of Music", intakeStatus: IntakeStatus.OPEN, duration: "3 Months", feePerSemester: "KES 17,500" },
+  { name: "Musical Instruments (Guitar)", department: "School of Music", intakeStatus: IntakeStatus.OPEN, duration: "3 Months", feePerSemester: "KES 17,500" },
+
+  // ── General Programmes ───────────────────────────────────────────────────
+  { name: "Driving Class B & C", department: "General Programmes", intakeStatus: IntakeStatus.OPEN, duration: "1 Month", feePerSemester: "KES 17,000" },
+];
+
+// -----------------------------------------------------------------------------
+// HELPERS
+// -----------------------------------------------------------------------------
+
+function toSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function toCode(name: string): string {
+  return name
+    .toUpperCase()
+    .replace(/&/g, "AND")
+    .replace(/[^A-Z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 40);
+}
+
+// -----------------------------------------------------------------------------
+// MAIN
+// -----------------------------------------------------------------------------
 
 async function main() {
-  /*
-   * Clear website content in dependency order.
-   */
+  console.log("Clearing existing data...");
+
   await prisma.testimonial.deleteMany();
   await prisma.galleryImage.deleteMany();
   await prisma.news.deleteMany();
-
-  /*
-   * Remove application/student/staff/user data only if they exist
-   * before clearing courses/campuses.
-   *
-   * The website seed itself does not create these records.
-   */
   await prisma.course.deleteMany();
   await prisma.departmentCampus.deleteMany();
   await prisma.department.deleteMany();
   await prisma.campus.deleteMany();
 
-  /*
-   * Campuses
-   */
+  console.log("✓ Cleared");
+
+  // ---------------------------------------------------------------------------
+  // CAMPUSES
+  // ---------------------------------------------------------------------------
+
+  console.log("Creating campuses...");
+
   const kerugoya = await prisma.campus.create({
     data: {
       name: "Kerugoya Campus",
@@ -53,14 +149,12 @@ async function main() {
       address: "P.O. Box 123-10304, Kerugoya",
       description:
         "The Kerugoya Campus is our founding site, set in the heart of Kirinyaga County. It hosts fully-equipped workshops, modern ICT labs, and a dedicated beauty studio, providing students with hands-on training in a supportive environment.",
-      directions:
-        "From Kerugoya town centre, take the Kutus Road heading east. The campus is approximately 500 m past the Total petrol station on your left, behind the blue perimeter wall.",
-      phone: "+254 720 000 001",
+      directions: "Kerugoya Town, Anchor Plaza, 3rd Floor, Behind Family Bank",
+      phone: "+254 713 255 342",
       email: "kerugoya@kstti.ac.ke",
       image: "https://picsum.photos/seed/kerugoya/800/600",
-      mapsUrl: "https://maps.google.com/?q=Kerugoya,Kenya",
-      mapEmbedUrl:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.0!2d37.283!3d-0.499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMCXCsDI5JzU2LjQiUyAzN8KwMTYnNTguOCJF!5e0!3m2!1sen!2ske!4v1600000000000!5m2!1sen!2ske",
+      mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d37.2769641!3d-0.5046316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182881001c5c1475%3A0x40c49b6cdde7a42e!2sAnchor%20Plaza%20Kerugoya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d37.2769641!3d-0.5046316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182881001c5c1475%3A0x40c49b6cdde7a42e!2sAnchor%20Plaza%20Kerugoya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
     },
   });
 
@@ -73,74 +167,77 @@ async function main() {
       description:
         "The Ruai Campus brings KSTTI's practical training model to Nairobi's eastern corridor. With spacious technical workshops, a hospitality training kitchen, and a well-stocked library, students here benefit from an urban campus close to industry and employment opportunities.",
       directions:
-        "Along Kangundo Road, alight at the Ruai stage. Walk 200 m towards the Ruai market junction and turn left at the KCB branch. The campus gate is 100 m on your right.",
-      phone: "+254 720 000 002",
+        "Ruai Town, Gatwick Business Center, room D28, Next to Naivas supermarket",
+      phone: "+254 798 469 493",
       email: "ruai@kstti.ac.ke",
       image: "https://picsum.photos/seed/ruai/800/600",
-      mapsUrl: "https://maps.google.com/?q=Ruai,Nairobi,Kenya",
-      mapEmbedUrl:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0!2d36.974!3d-1.267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTYnMDEuMiJTIDM2wrA1OCczNi42IkU!5e0!3m2!1sen!2ske!4v1600000000001!5m2!1sen!2ske",
+      mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0!2d36.9916934!3d-1.2687497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f6be50bf3fa1b%3A0x144d6f34a7ead2c0!2sAnavah%20Printers%20Kenya!5e0!3m2!1sen!2ske!4v1700000000001!5m2!1sen!2ske",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0!2d36.9916934!3d-1.2687497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f6be50bf3fa1b%3A0x144d6f34a7ead2c0!2sAnavah%20Printers%20Kenya!5e0!3m2!1sen!2ske!4v1700000000001!5m2!1sen!2ske",
     },
   });
 
-  /*
-   * Departments
-   */
-  const departments = [
+  console.log("✓ Campuses created");
+
+  // ---------------------------------------------------------------------------
+  // DEPARTMENTS
+  // ---------------------------------------------------------------------------
+
+  console.log("Creating departments...");
+
+  const departmentSeeds = [
     {
-      name: "Beauty & Cosmetology",
-      slug: "beauty-cosmetology",
+      name: "School of Cosmetology, Fashion & Design",
+      slug: "school-of-cosmetology-fashion-design",
       description:
-        "Professional training in beauty therapy, hairdressing, barbering, and nail technology.",
+        "Professional training in cosmetology, beauty therapy, hairdressing, barbering, nail technology, interior design, fashion and design.",
     },
     {
-      name: "Information Communication Technology",
-      slug: "information-communication-technology",
+      name: "School of ICT Computing & Informatics",
+      slug: "school-of-ict-computing-informatics",
       description:
         "Practical ICT training focused on modern digital skills and computing technologies.",
     },
     {
-      name: "Business Studies",
-      slug: "business-studies",
+      name: "School of Building & Civil Engineering",
+      slug: "school-of-building-civil-engineering",
       description:
-        "Industry-oriented programmes that prepare learners for business and entrepreneurship.",
+        "Training in building construction, civil engineering principles, and related technical skills.",
     },
     {
-      name: "Hospitality",
-      slug: "hospitality",
+      name: "School of Electrical & Electronic Engineering",
+      slug: "school-of-electrical-and-electronic-engineering",
+      description:
+        "Technical programmes designed to develop practical workplace and self-employment skills in Electrical and Electronic Engineering.",
+    },
+    {
+      name: "School of Hospitality",
+      slug: "school-of-hospitality",
       description:
         "Hands-on hospitality training covering food production, customer service, and catering.",
     },
     {
-      name: "Technical Studies",
-      slug: "technical-studies",
+      name: "School of Music",
+      slug: "school-of-music",
       description:
-        "Technical programmes designed to develop practical workplace and self-employment skills.",
+        "Comprehensive music training covering performance, theory, and production.",
     },
     {
-      name: "Short Professional Courses",
-      slug: "short-professional-courses",
+      name: "General Programmes",
+      slug: "general-programmes",
       description:
-        "Flexible short courses for learners seeking practical skills and career advancement.",
+        "General programmes for learners seeking foundational or specialised skills outside the main schools.",
     },
   ];
 
   const createdDepartments = await Promise.all(
-    departments.map((department) =>
+    departmentSeeds.map((dept) =>
       prisma.department.create({
         data: {
-          name: department.name,
-          slug: department.slug,
-          description: department.description,
+          name: dept.name,
+          slug: dept.slug,
+          description: dept.description,
           campuses: {
-            create: [
-              {
-                campusId: kerugoya.id,
-              },
-              {
-                campusId: ruai.id,
-              },
-            ],
+            create: [{ campusId: kerugoya.id }, { campusId: ruai.id }],
           },
         },
       }),
@@ -148,315 +245,95 @@ async function main() {
   );
 
   const departmentMap = new Map(
-    createdDepartments.map((department) => [
-      department.name,
-      department.id,
-    ]),
+    createdDepartments.map((d) => [d.name, d.id]),
   );
 
-  /*
-   * Courses
-   */
-  const courses = [
-    {
-      name: "Certificate in Beauty Therapy",
-      department: "Beauty & Cosmetology",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "2 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 18,500",
-    },
-    {
-      name: "Diploma in Hairdressing & Cosmetology",
-      department: "Beauty & Cosmetology",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "4 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 22,000",
-    },
-    {
-      name: "Certificate in Barbering",
-      department: "Beauty & Cosmetology",
-      intakeStatus: IntakeStatus.CLOSING_SOON,
-      duration: "2 Semesters",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 15,000",
-    },
-    {
-      name: "Certificate in Nail Technology",
-      department: "Beauty & Cosmetology",
-      intakeStatus: IntakeStatus.CLOSED,
-      duration: "1 Semester",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 12,000",
-    },
-    {
-      name: "Certificate in Computer Applications",
-      department: "Information Communication Technology",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "2 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 16,000",
-    },
-    {
-      name: "Diploma in Information Technology",
-      department: "Information Communication Technology",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "6 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 24,500",
-    },
-    {
-      name: "Certificate in Graphic Design",
-      department: "Information Communication Technology",
-      intakeStatus: IntakeStatus.CLOSING_SOON,
-      duration: "2 Semesters",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 19,000",
-    },
-    {
-      name: "Certificate in Web Development",
-      department: "Information Communication Technology",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "3 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 21,000",
-    },
-    {
-      name: "Certificate in Business Administration",
-      department: "Business Studies",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "2 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 14,500",
-    },
-    {
-      name: "Diploma in Accounting & Finance",
-      department: "Business Studies",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "6 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 20,000",
-    },
-    {
-      name: "Certificate in Office Administration",
-      department: "Business Studies",
-      intakeStatus: IntakeStatus.CLOSING_SOON,
-      duration: "2 Semesters",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 13,500",
-    },
-    {
-      name: "Certificate in Entrepreneurship",
-      department: "Business Studies",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "2 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 14,000",
-    },
-    {
-      name: "Certificate in Food & Beverage",
-      department: "Hospitality",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "2 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 17,500",
-    },
-    {
-      name: "Diploma in Hospitality Management",
-      department: "Hospitality",
-      intakeStatus: IntakeStatus.CLOSED,
-      duration: "6 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 23,000",
-    },
-    {
-      name: "Certificate in Catering & Nutrition",
-      department: "Hospitality",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "3 Semesters",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 16,500",
-    },
-    {
-      name: "Certificate in Electrical Installation",
-      department: "Technical Studies",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "4 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 19,500",
-    },
-    {
-      name: "Certificate in Plumbing & Pipefitting",
-      department: "Technical Studies",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "3 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 18,000",
-    },
-    {
-      name: "Certificate in Welding & Fabrication",
-      department: "Technical Studies",
-      intakeStatus: IntakeStatus.CLOSING_SOON,
-      duration: "3 Semesters",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 17,000",
-    },
-    {
-      name: "Certificate in Motor Vehicle Mechanics",
-      department: "Technical Studies",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "4 Semesters",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 21,500",
-    },
-    {
-      name: "Digital Marketing Essentials",
-      department: "Short Professional Courses",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "6 Weeks",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 8,500",
-    },
-    {
-      name: "Spoken English & Communication",
-      department: "Short Professional Courses",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "8 Weeks",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 7,000",
-    },
-    {
-      name: "QuickBooks Accounting",
-      department: "Short Professional Courses",
-      intakeStatus: IntakeStatus.CLOSING_SOON,
-      duration: "4 Weeks",
-      campusLabel: "Main Campus",
-      feePerSemester: "KES 6,500",
-    },
-    {
-      name: "Basic Sewing & Tailoring",
-      department: "Short Professional Courses",
-      intakeStatus: IntakeStatus.OPEN,
-      duration: "10 Weeks",
-      campusLabel: "Town Campus",
-      feePerSemester: "KES 9,000",
-    },
-  ];
+  console.log(`✓ ${createdDepartments.length} departments created`);
 
-  for (const course of courses) {
-    const departmentId = departmentMap.get(course.department);
+  // ---------------------------------------------------------------------------
+  // VALIDATE department references before inserting
+  // ---------------------------------------------------------------------------
 
-    if (!departmentId) {
-      throw new Error(`Department not found: ${course.department}`);
-    }
+  const validDepartments = new Set(departmentSeeds.map((d) => d.name));
+  const invalidCourses = COURSES.filter(
+    (c) => !validDepartments.has(c.department),
+  );
+
+  if (invalidCourses.length > 0) {
+    throw new Error(
+      `The following courses reference unknown departments:\n` +
+      invalidCourses
+        .map((c) => `  "${c.name}" → "${c.department}"`)
+        .join("\n"),
+    );
+  }
+
+  // ---------------------------------------------------------------------------
+  // COURSES
+  // ---------------------------------------------------------------------------
+
+  console.log("Creating courses...");
+
+  for (const course of COURSES) {
+    const departmentId = departmentMap.get(course.department)!;
 
     await prisma.course.create({
       data: {
         name: course.name,
-        slug: course.name
-          .toLowerCase()
-          .replace(/&/g, "and")
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-|-$/g, ""),
-        code: course.name
-          .toUpperCase()
-          .replace(/&/g, "AND")
-          .replace(/[^A-Z0-9]+/g, "-")
-          .replace(/^-|-$/g, "")
-          .slice(0, 40),
+        slug: toSlug(course.name),
+        code: toCode(course.name),
         duration: course.duration,
         intakeStatus: course.intakeStatus,
-        campusLabel: course.campusLabel,
         feePerSemester: course.feePerSemester,
+        campusLabel: "Both Campuses",
         departmentId,
       },
     });
   }
 
-  /*
-   * Gallery
-   */
-  const gallery = [
-    {
-      span: GallerySpan.TALL,
-      title: "Practical Training",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Campus Life",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Student Activities",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "ICT Lab",
-    },
-    {
-      span: GallerySpan.TALL,
-      title: "Beauty Workshop",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Graduation Day",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Hospitality Class",
-    },
-    {
-      span: GallerySpan.WIDE_TALL,
-      title: "Main Campus",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Technical Workshop",
-    },
-    {
-      span: GallerySpan.TALL,
-      title: "Student Projects",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Sports Day",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Library",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Open Day",
-    },
-    {
-      span: GallerySpan.TALL,
-      title: "Barbering Studio",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Business Class",
-    },
-    {
-      span: GallerySpan.NORMAL,
-      title: "Awards Ceremony",
-    },
+  console.log(`✓ ${COURSES.length} courses created`);
+
+  // ---------------------------------------------------------------------------
+  // GALLERY
+  // ---------------------------------------------------------------------------
+
+  console.log("Creating gallery...");
+
+  const gallery: { title: string; span: GallerySpan }[] = [
+    { title: "Practical Training", span: GallerySpan.TALL },
+    { title: "Campus Life", span: GallerySpan.NORMAL },
+    { title: "Student Activities", span: GallerySpan.NORMAL },
+    { title: "ICT Lab", span: GallerySpan.NORMAL },
+    { title: "Beauty Workshop", span: GallerySpan.TALL },
+    { title: "Graduation Day", span: GallerySpan.NORMAL },
+    { title: "Hospitality Class", span: GallerySpan.NORMAL },
+    { title: "Main Campus", span: GallerySpan.WIDE_TALL },
+    { title: "Technical Workshop", span: GallerySpan.NORMAL },
+    { title: "Student Projects", span: GallerySpan.TALL },
+    { title: "Sports Day", span: GallerySpan.NORMAL },
+    { title: "Library", span: GallerySpan.NORMAL },
+    { title: "Open Day", span: GallerySpan.NORMAL },
+    { title: "Barbering Studio", span: GallerySpan.TALL },
+    { title: "Business Class", span: GallerySpan.NORMAL },
+    { title: "Awards Ceremony", span: GallerySpan.NORMAL },
   ];
 
-  for (const item of gallery) {
-    await prisma.galleryImage.create({
-      data: {
-        title: item.title,
-        image: "",
-        span: item.span,
-      },
-    });
-  }
+  await prisma.galleryImage.createMany({
+    data: gallery.map((item) => ({
+      title: item.title,
+      image: "",
+      span: item.span,
+    })),
+  });
 
-  /*
-   * News
-   */
+  console.log(`✓ ${gallery.length} gallery images created`);
+
+  // ---------------------------------------------------------------------------
+  // NEWS
+  // ---------------------------------------------------------------------------
+
+  console.log("Creating news...");
+
   await prisma.news.createMany({
     data: [
       {
@@ -467,8 +344,7 @@ async function main() {
         content:
           "Applications are open for our ongoing intake across all programmes at both campuses. Apply online and begin your training journey at KSTTI.",
         category: "Admissions",
-        coverImage:
-          "https://picsum.photos/800/600?random=23",
+        coverImage: "https://picsum.photos/800/600?random=23",
         published: true,
       },
       {
@@ -479,8 +355,7 @@ async function main() {
         content:
           "Our programmes continue to emphasize practical learning and workplace readiness, ensuring graduates are equipped for employment and entrepreneurship.",
         category: "Academics",
-        coverImage:
-          "https://picsum.photos/800/600?random=24",
+        coverImage: "https://picsum.photos/800/600?random=24",
         published: true,
       },
       {
@@ -491,16 +366,20 @@ async function main() {
         content:
           "KSTTI continues to provide personalized support through small class sizes and dedicated instructors committed to every learner's success.",
         category: "Student Life",
-        coverImage:
-          "https://picsum.photos/800/600?random=25",
+        coverImage: "https://picsum.photos/800/600?random=25",
         published: true,
       },
     ],
   });
 
-  /*
-   * Testimonials
-   */
+  console.log("✓ 3 news articles created");
+
+  // ---------------------------------------------------------------------------
+  // TESTIMONIALS
+  // ---------------------------------------------------------------------------
+
+  console.log("Creating testimonials...");
+
   await prisma.testimonial.createMany({
     data: [
       {
@@ -524,11 +403,31 @@ async function main() {
     ],
   });
 
-  console.log("KSTTI seed completed successfully.");
+  console.log("✓ 3 testimonials created");
+
+  // ---------------------------------------------------------------------------
+  // SUMMARY
+  // ---------------------------------------------------------------------------
+
+  console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  console.log("  Seed completed successfully");
+  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  console.log(`  Campuses:      2`);
+  console.log(`  Departments:   ${createdDepartments.length}`);
+  console.log(`  Courses:       ${COURSES.length}`);
+  console.log(`  Gallery:       ${gallery.length}`);
+  console.log(`  News:          3`);
+  console.log(`  Testimonials:  3`);
+  console.log();
 }
+
+// -----------------------------------------------------------------------------
+// EXECUTE
+// -----------------------------------------------------------------------------
 
 main()
   .catch((error) => {
+    console.error("\n✗ Seed failed:");
     console.error(error);
     process.exit(1);
   })

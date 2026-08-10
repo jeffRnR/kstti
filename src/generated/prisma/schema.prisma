@@ -50,6 +50,17 @@ enum GallerySpan {
   WIDE_TALL
 }
 
+enum ModeOfStudy {
+  FULL_TIME
+  PART_TIME
+}
+
+enum Intake {
+  JANUARY
+  MAY
+  SEPTEMBER
+}
+
 model User {
   id       String  @id @default(cuid())
   name     String
@@ -189,7 +200,9 @@ model AdmissionApplication {
   processedById String?
   processedBy   User?   @relation("ProcessedBy", fields: [processedById], references: [id])
 
-  student Student?
+  student     Student?
+  modeOfStudy ModeOfStudy
+  intake      Intake
 
   submittedAt DateTime?
   createdAt   DateTime  @default(now())

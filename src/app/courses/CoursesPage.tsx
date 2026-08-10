@@ -9,13 +9,16 @@ export const metadata = {
   title: "Courses",
 };
 
+type RawIntakeStatus = "OPEN" | "CLOSING_SOON" | "CLOSED";
+
+// Display values used in the UI
 type IntakeStatus = "Open" | "Closing Soon" | "Closed";
 
 interface Course {
   id: string;
   name: string;
   department: string;
-  intakeStatus: IntakeStatus;
+  intakeStatus: RawIntakeStatus;
   duration: string;
   campus: string;
   feePerSemester: string;
@@ -104,6 +107,13 @@ export default function CoursesPage({
 
       <main>
         <section className="relative overflow-hidden bg-[#0A0A0A] !py-24 md:!py-32">
+          <div
+            className="absolute inset-0 bg-cover bg-center object-cover"
+            style={{
+              backgroundImage: "url('/random.jpg')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/75" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(229,173,35,0.07),transparent_60%)]" />
           <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
 

@@ -21,7 +21,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="section bg-[#F8F7F4]">
+    <section className="section bg-white">
       <div className="container-xl flex flex-col gap-12">
         <div className="text-center">
           <span className="tagline-center">Why Choose KSTTI</span>

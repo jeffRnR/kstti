@@ -210,6 +210,8 @@ exports.Prisma.AdmissionApplicationScalarFieldEnum = {
   status: 'status',
   courseId: 'courseId',
   processedById: 'processedById',
+  modeOfStudy: 'modeOfStudy',
+  intake: 'intake',
   submittedAt: 'submittedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -324,6 +326,17 @@ exports.ApplicationStatus = exports.$Enums.ApplicationStatus = {
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED',
   ADMITTED: 'ADMITTED'
+};
+
+exports.ModeOfStudy = exports.$Enums.ModeOfStudy = {
+  FULL_TIME: 'FULL_TIME',
+  PART_TIME: 'PART_TIME'
+};
+
+exports.Intake = exports.$Enums.Intake = {
+  JANUARY: 'JANUARY',
+  MAY: 'MAY',
+  SEPTEMBER: 'SEPTEMBER'
 };
 
 exports.GallerySpan = exports.$Enums.GallerySpan = {

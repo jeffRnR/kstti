@@ -50,6 +50,17 @@ enum GallerySpan {
   WIDE_TALL
 }
 
+enum ModeOfStudy {
+  FULL_TIME
+  PART_TIME
+}
+
+enum Intake {
+  JANUARY
+  MAY
+  SEPTEMBER
+}
+
 model User {
   id       String  @id @default(cuid())
   name     String
@@ -68,20 +79,20 @@ model User {
 }
 
 model Campus {
-  id      String     @id @default(cuid())
-  name    String     @unique
-  code    CampusCode @unique
+  id   String     @id @default(cuid())
+  name String     @unique
+  code CampusCode @unique
 
-  location     String?
-  address      String?
-  directions   String?
-  description  String?
-  image        String?
-  mapsUrl      String?
-  mapEmbedUrl  String?
+  location    String?
+  address     String?
+  directions  String?
+  description String?
+  image       String?
+  mapsUrl     String?
+  mapEmbedUrl String?
 
-  phone   String?
-  email   String?
+  phone String?
+  email String?
 
   departments DepartmentCampus[]
   courses     Course[]
@@ -117,19 +128,19 @@ model DepartmentCampus {
 }
 
 model Course {
-  id            String       @id @default(cuid())
-  name          String
-  slug          String       @unique
-  code          String       @unique
-  description   String?
-  duration      String
-  qualification String?
-  requirements  String?
-  intakeStatus IntakeStatus @default(OPEN)
-  campusLabel   String
+  id             String       @id @default(cuid())
+  name           String
+  slug           String       @unique
+  code           String       @unique
+  description    String?
+  duration       String
+  qualification  String?
+  requirements   String?
+  intakeStatus   IntakeStatus @default(OPEN)
+  campusLabel    String
   feePerSemester String?
-  featured      Boolean      @default(false)
-  isActive      Boolean      @default(true)
+  featured       Boolean      @default(false)
+  isActive       Boolean      @default(true)
 
   departmentId String
   department   Department @relation(fields: [departmentId], references: [id])
@@ -187,9 +198,11 @@ model AdmissionApplication {
   course   Course @relation(fields: [courseId], references: [id])
 
   processedById String?
-  processedBy   User? @relation("ProcessedBy", fields: [processedById], references: [id])
+  processedBy   User?   @relation("ProcessedBy", fields: [processedById], references: [id])
 
-  student Student?
+  student     Student?
+  modeOfStudy ModeOfStudy
+  intake      Intake
 
   submittedAt DateTime?
   createdAt   DateTime  @default(now())
@@ -205,9 +218,9 @@ model Student {
   admissionNumber String @unique
 
   userId String? @unique
-  user   User? @relation(fields: [userId], references: [id])
+  user   User?   @relation(fields: [userId], references: [id])
 
-  applicationId String                @unique
+  applicationId String               @unique
   application   AdmissionApplication @relation(fields: [applicationId], references: [id])
 
   courseId String
@@ -257,10 +270,10 @@ model GalleryImage {
 }
 
 model Testimonial {
-  id      String @id @default(cuid())
-  name    String
-  course  String
-  quote   String
+  id     String @id @default(cuid())
+  name   String
+  course String
+  quote  String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

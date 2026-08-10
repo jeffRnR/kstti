@@ -16,7 +16,7 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover opacity-55"
       >
         <source
-          src="https://assets.mixkit.co/videos/preview/mixkit-students-walking-through-a-university-campus-4512-large.mp4"
+          src="/215475.mp4"
           type="video/mp4"
         />
       </video>

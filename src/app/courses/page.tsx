@@ -8,24 +8,13 @@ export const metadata = {
 export default async function Page() {
   const [courses, departments] = await Promise.all([
     prisma.course.findMany({
-      where: {
-        isActive: true,
-      },
-      include: {
-        department: true,
-      },
-      orderBy: {
-        createdAt: "asc",
-      },
+      where: { isActive: true },
+      include: { department: true },
+      orderBy: { createdAt: "asc" },
     }),
-
     prisma.department.findMany({
-      where: {
-        isActive: true,
-      },
-      orderBy: {
-        name: "asc",
-      },
+      where: { isActive: true },
+      orderBy: { name: "asc" },
     }),
   ]);
 
@@ -35,13 +24,7 @@ export default async function Page() {
         id: course.id,
         name: course.name,
         department: course.department.name,
-        intakeStatus: course.intakeStatus
-          .toLowerCase()
-          .replace("_", " ")
-          .replace(/\b\w/g, (letter) => letter.toUpperCase()) as
-          | "Open"
-          | "Closing Soon"
-          | "Closed",
+        intakeStatus: course.intakeStatus as "OPEN" | "CLOSING_SOON" | "CLOSED",
         duration: course.duration,
         campus: course.campusLabel,
         feePerSemester: course.feePerSemester ?? "",
