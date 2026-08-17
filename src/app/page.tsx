@@ -12,6 +12,7 @@ import Testimonials from "@/components/home/Testimonials";
 import Campuses from "@/components/home/Campuses";
 import Link from "next/link";
 import CallToAction from "@/components/home/CallToAction";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export default function HomePage() {
   return (
@@ -29,6 +30,7 @@ export default function HomePage() {
         <Testimonials />
         <CallToAction />
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>
