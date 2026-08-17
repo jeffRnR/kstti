@@ -3,6 +3,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/contact/ContactForm";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Contact",
@@ -98,7 +99,7 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-
+      <WhatsAppBadge />
       <Footer />
     </>
   );

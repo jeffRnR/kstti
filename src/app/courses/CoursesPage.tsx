@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Courses",
@@ -354,6 +355,7 @@ export default function CoursesPage({
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

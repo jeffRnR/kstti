@@ -403,6 +403,23 @@ async function main() {
     ],
   });
 
+  // ---------------------------------------------------------------------------
+  // Active Intakes
+  // ---------------------------------------------------------------------------
+
+  await prisma.intakeSession.upsert({
+    where: { id: "seed-intake-1" },
+    update: {},
+    create: {
+      id: "seed-intake-1",
+      name: "September 2025 Intake",
+      intakePeriod: "SEPTEMBER",
+      applicationOpen: true,
+      applicationDeadline: new Date("2025-10-31"),
+      isActive: true,
+    },
+  });
+
   console.log("✓ 3 testimonials created");
 
   // ---------------------------------------------------------------------------

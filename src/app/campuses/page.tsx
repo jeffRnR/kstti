@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MapPin, Navigation, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import prisma from "@/lib/prisma";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Campuses",
@@ -144,7 +145,9 @@ export default async function CampusesPage() {
             </div>
           </div>
         </section>
+        
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

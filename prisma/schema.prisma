@@ -292,3 +292,21 @@ model ContactMessage {
 
   createdAt DateTime @default(now())
 }
+
+model IntakeSession {
+  id   String @id @default(cuid())
+  name String // e.g. "January 2025 Intake"
+
+  intakePeriod Intake // JANUARY | MAY | SEPTEMBER
+
+  applicationOpen     Boolean   @default(false)
+  applicationDeadline DateTime?
+
+  startsAt DateTime?
+  endsAt   DateTime?
+
+  isActive Boolean @default(true) // soft-delete / archive
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

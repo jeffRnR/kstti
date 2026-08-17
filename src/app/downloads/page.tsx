@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import { Download } from "lucide-react";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Downloads",
@@ -92,6 +93,7 @@ export default function DownloadsPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

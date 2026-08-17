@@ -3,6 +3,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ApplicationForm from "@/components/apply/ApplicationForm";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Apply Online",
@@ -47,6 +48,7 @@ export default function ApplyPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

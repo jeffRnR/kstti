@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import prisma from "@/lib/prisma";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Gallery",
@@ -90,6 +91,7 @@ export default async function GalleryPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

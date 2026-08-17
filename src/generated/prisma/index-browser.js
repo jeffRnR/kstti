@@ -277,6 +277,19 @@ exports.Prisma.ContactMessageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.IntakeSessionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  intakePeriod: 'intakePeriod',
+  applicationOpen: 'applicationOpen',
+  applicationDeadline: 'applicationDeadline',
+  startsAt: 'startsAt',
+  endsAt: 'endsAt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -357,7 +370,8 @@ exports.Prisma.ModelName = {
   News: 'News',
   GalleryImage: 'GalleryImage',
   Testimonial: 'Testimonial',
-  ContactMessage: 'ContactMessage'
+  ContactMessage: 'ContactMessage',
+  IntakeSession: 'IntakeSession'
 };
 
 /**

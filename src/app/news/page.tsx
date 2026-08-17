@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import prisma from "@/lib/prisma";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "News",
@@ -121,6 +122,7 @@ export default async function NewsPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

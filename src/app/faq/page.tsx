@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Frequently Asked Questions",
@@ -80,6 +81,7 @@ export default function FAQPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

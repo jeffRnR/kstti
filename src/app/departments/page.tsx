@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Departments",
@@ -82,6 +83,7 @@ export default async function DepartmentsPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

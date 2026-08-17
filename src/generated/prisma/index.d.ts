@@ -73,6 +73,11 @@ export type Testimonial = $Result.DefaultSelection<Prisma.$TestimonialPayload>
  * 
  */
 export type ContactMessage = $Result.DefaultSelection<Prisma.$ContactMessagePayload>
+/**
+ * Model IntakeSession
+ * 
+ */
+export type IntakeSession = $Result.DefaultSelection<Prisma.$IntakeSessionPayload>
 
 /**
  * Enums
@@ -429,6 +434,16 @@ export class PrismaClient<
     * ```
     */
   get contactMessage(): Prisma.ContactMessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.intakeSession`: Exposes CRUD operations for the **IntakeSession** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more IntakeSessions
+    * const intakeSessions = await prisma.intakeSession.findMany()
+    * ```
+    */
+  get intakeSession(): Prisma.IntakeSessionDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -887,7 +902,8 @@ export namespace Prisma {
     News: 'News',
     GalleryImage: 'GalleryImage',
     Testimonial: 'Testimonial',
-    ContactMessage: 'ContactMessage'
+    ContactMessage: 'ContactMessage',
+    IntakeSession: 'IntakeSession'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -903,7 +919,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "campus" | "department" | "departmentCampus" | "course" | "admissionApplication" | "student" | "staff" | "news" | "galleryImage" | "testimonial" | "contactMessage"
+      modelProps: "user" | "campus" | "department" | "departmentCampus" | "course" | "admissionApplication" | "student" | "staff" | "news" | "galleryImage" | "testimonial" | "contactMessage" | "intakeSession"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1795,6 +1811,80 @@ export namespace Prisma {
           }
         }
       }
+      IntakeSession: {
+        payload: Prisma.$IntakeSessionPayload<ExtArgs>
+        fields: Prisma.IntakeSessionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.IntakeSessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.IntakeSessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>
+          }
+          findFirst: {
+            args: Prisma.IntakeSessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.IntakeSessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>
+          }
+          findMany: {
+            args: Prisma.IntakeSessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>[]
+          }
+          create: {
+            args: Prisma.IntakeSessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>
+          }
+          createMany: {
+            args: Prisma.IntakeSessionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.IntakeSessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>[]
+          }
+          delete: {
+            args: Prisma.IntakeSessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>
+          }
+          update: {
+            args: Prisma.IntakeSessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>
+          }
+          deleteMany: {
+            args: Prisma.IntakeSessionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.IntakeSessionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.IntakeSessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>[]
+          }
+          upsert: {
+            args: Prisma.IntakeSessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IntakeSessionPayload>
+          }
+          aggregate: {
+            args: Prisma.IntakeSessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateIntakeSession>
+          }
+          groupBy: {
+            args: Prisma.IntakeSessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<IntakeSessionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.IntakeSessionCountArgs<ExtArgs>
+            result: $Utils.Optional<IntakeSessionCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1930,6 +2020,7 @@ export namespace Prisma {
     galleryImage?: GalleryImageOmit
     testimonial?: TestimonialOmit
     contactMessage?: ContactMessageOmit
+    intakeSession?: IntakeSessionOmit
   }
 
   /* Types for Logging */
@@ -15819,6 +15910,1071 @@ export namespace Prisma {
 
 
   /**
+   * Model IntakeSession
+   */
+
+  export type AggregateIntakeSession = {
+    _count: IntakeSessionCountAggregateOutputType | null
+    _min: IntakeSessionMinAggregateOutputType | null
+    _max: IntakeSessionMaxAggregateOutputType | null
+  }
+
+  export type IntakeSessionMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    intakePeriod: $Enums.Intake | null
+    applicationOpen: boolean | null
+    applicationDeadline: Date | null
+    startsAt: Date | null
+    endsAt: Date | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IntakeSessionMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    intakePeriod: $Enums.Intake | null
+    applicationOpen: boolean | null
+    applicationDeadline: Date | null
+    startsAt: Date | null
+    endsAt: Date | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IntakeSessionCountAggregateOutputType = {
+    id: number
+    name: number
+    intakePeriod: number
+    applicationOpen: number
+    applicationDeadline: number
+    startsAt: number
+    endsAt: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type IntakeSessionMinAggregateInputType = {
+    id?: true
+    name?: true
+    intakePeriod?: true
+    applicationOpen?: true
+    applicationDeadline?: true
+    startsAt?: true
+    endsAt?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IntakeSessionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    intakePeriod?: true
+    applicationOpen?: true
+    applicationDeadline?: true
+    startsAt?: true
+    endsAt?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IntakeSessionCountAggregateInputType = {
+    id?: true
+    name?: true
+    intakePeriod?: true
+    applicationOpen?: true
+    applicationDeadline?: true
+    startsAt?: true
+    endsAt?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type IntakeSessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which IntakeSession to aggregate.
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IntakeSessions to fetch.
+     */
+    orderBy?: IntakeSessionOrderByWithRelationInput | IntakeSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: IntakeSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IntakeSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IntakeSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned IntakeSessions
+    **/
+    _count?: true | IntakeSessionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IntakeSessionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IntakeSessionMaxAggregateInputType
+  }
+
+  export type GetIntakeSessionAggregateType<T extends IntakeSessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateIntakeSession]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIntakeSession[P]>
+      : GetScalarType<T[P], AggregateIntakeSession[P]>
+  }
+
+
+
+
+  export type IntakeSessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IntakeSessionWhereInput
+    orderBy?: IntakeSessionOrderByWithAggregationInput | IntakeSessionOrderByWithAggregationInput[]
+    by: IntakeSessionScalarFieldEnum[] | IntakeSessionScalarFieldEnum
+    having?: IntakeSessionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IntakeSessionCountAggregateInputType | true
+    _min?: IntakeSessionMinAggregateInputType
+    _max?: IntakeSessionMaxAggregateInputType
+  }
+
+  export type IntakeSessionGroupByOutputType = {
+    id: string
+    name: string
+    intakePeriod: $Enums.Intake
+    applicationOpen: boolean
+    applicationDeadline: Date | null
+    startsAt: Date | null
+    endsAt: Date | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: IntakeSessionCountAggregateOutputType | null
+    _min: IntakeSessionMinAggregateOutputType | null
+    _max: IntakeSessionMaxAggregateOutputType | null
+  }
+
+  type GetIntakeSessionGroupByPayload<T extends IntakeSessionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<IntakeSessionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IntakeSessionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IntakeSessionGroupByOutputType[P]>
+            : GetScalarType<T[P], IntakeSessionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type IntakeSessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    intakePeriod?: boolean
+    applicationOpen?: boolean
+    applicationDeadline?: boolean
+    startsAt?: boolean
+    endsAt?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["intakeSession"]>
+
+  export type IntakeSessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    intakePeriod?: boolean
+    applicationOpen?: boolean
+    applicationDeadline?: boolean
+    startsAt?: boolean
+    endsAt?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["intakeSession"]>
+
+  export type IntakeSessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    intakePeriod?: boolean
+    applicationOpen?: boolean
+    applicationDeadline?: boolean
+    startsAt?: boolean
+    endsAt?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["intakeSession"]>
+
+  export type IntakeSessionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    intakePeriod?: boolean
+    applicationOpen?: boolean
+    applicationDeadline?: boolean
+    startsAt?: boolean
+    endsAt?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type IntakeSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "intakePeriod" | "applicationOpen" | "applicationDeadline" | "startsAt" | "endsAt" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["intakeSession"]>
+
+  export type $IntakeSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "IntakeSession"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      intakePeriod: $Enums.Intake
+      applicationOpen: boolean
+      applicationDeadline: Date | null
+      startsAt: Date | null
+      endsAt: Date | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["intakeSession"]>
+    composites: {}
+  }
+
+  type IntakeSessionGetPayload<S extends boolean | null | undefined | IntakeSessionDefaultArgs> = $Result.GetResult<Prisma.$IntakeSessionPayload, S>
+
+  type IntakeSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<IntakeSessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: IntakeSessionCountAggregateInputType | true
+    }
+
+  export interface IntakeSessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['IntakeSession'], meta: { name: 'IntakeSession' } }
+    /**
+     * Find zero or one IntakeSession that matches the filter.
+     * @param {IntakeSessionFindUniqueArgs} args - Arguments to find a IntakeSession
+     * @example
+     * // Get one IntakeSession
+     * const intakeSession = await prisma.intakeSession.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends IntakeSessionFindUniqueArgs>(args: SelectSubset<T, IntakeSessionFindUniqueArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one IntakeSession that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {IntakeSessionFindUniqueOrThrowArgs} args - Arguments to find a IntakeSession
+     * @example
+     * // Get one IntakeSession
+     * const intakeSession = await prisma.intakeSession.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends IntakeSessionFindUniqueOrThrowArgs>(args: SelectSubset<T, IntakeSessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IntakeSession that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionFindFirstArgs} args - Arguments to find a IntakeSession
+     * @example
+     * // Get one IntakeSession
+     * const intakeSession = await prisma.intakeSession.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends IntakeSessionFindFirstArgs>(args?: SelectSubset<T, IntakeSessionFindFirstArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IntakeSession that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionFindFirstOrThrowArgs} args - Arguments to find a IntakeSession
+     * @example
+     * // Get one IntakeSession
+     * const intakeSession = await prisma.intakeSession.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends IntakeSessionFindFirstOrThrowArgs>(args?: SelectSubset<T, IntakeSessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more IntakeSessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all IntakeSessions
+     * const intakeSessions = await prisma.intakeSession.findMany()
+     * 
+     * // Get first 10 IntakeSessions
+     * const intakeSessions = await prisma.intakeSession.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const intakeSessionWithIdOnly = await prisma.intakeSession.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends IntakeSessionFindManyArgs>(args?: SelectSubset<T, IntakeSessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a IntakeSession.
+     * @param {IntakeSessionCreateArgs} args - Arguments to create a IntakeSession.
+     * @example
+     * // Create one IntakeSession
+     * const IntakeSession = await prisma.intakeSession.create({
+     *   data: {
+     *     // ... data to create a IntakeSession
+     *   }
+     * })
+     * 
+     */
+    create<T extends IntakeSessionCreateArgs>(args: SelectSubset<T, IntakeSessionCreateArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many IntakeSessions.
+     * @param {IntakeSessionCreateManyArgs} args - Arguments to create many IntakeSessions.
+     * @example
+     * // Create many IntakeSessions
+     * const intakeSession = await prisma.intakeSession.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends IntakeSessionCreateManyArgs>(args?: SelectSubset<T, IntakeSessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many IntakeSessions and returns the data saved in the database.
+     * @param {IntakeSessionCreateManyAndReturnArgs} args - Arguments to create many IntakeSessions.
+     * @example
+     * // Create many IntakeSessions
+     * const intakeSession = await prisma.intakeSession.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many IntakeSessions and only return the `id`
+     * const intakeSessionWithIdOnly = await prisma.intakeSession.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends IntakeSessionCreateManyAndReturnArgs>(args?: SelectSubset<T, IntakeSessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a IntakeSession.
+     * @param {IntakeSessionDeleteArgs} args - Arguments to delete one IntakeSession.
+     * @example
+     * // Delete one IntakeSession
+     * const IntakeSession = await prisma.intakeSession.delete({
+     *   where: {
+     *     // ... filter to delete one IntakeSession
+     *   }
+     * })
+     * 
+     */
+    delete<T extends IntakeSessionDeleteArgs>(args: SelectSubset<T, IntakeSessionDeleteArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one IntakeSession.
+     * @param {IntakeSessionUpdateArgs} args - Arguments to update one IntakeSession.
+     * @example
+     * // Update one IntakeSession
+     * const intakeSession = await prisma.intakeSession.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends IntakeSessionUpdateArgs>(args: SelectSubset<T, IntakeSessionUpdateArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more IntakeSessions.
+     * @param {IntakeSessionDeleteManyArgs} args - Arguments to filter IntakeSessions to delete.
+     * @example
+     * // Delete a few IntakeSessions
+     * const { count } = await prisma.intakeSession.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends IntakeSessionDeleteManyArgs>(args?: SelectSubset<T, IntakeSessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IntakeSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many IntakeSessions
+     * const intakeSession = await prisma.intakeSession.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends IntakeSessionUpdateManyArgs>(args: SelectSubset<T, IntakeSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IntakeSessions and returns the data updated in the database.
+     * @param {IntakeSessionUpdateManyAndReturnArgs} args - Arguments to update many IntakeSessions.
+     * @example
+     * // Update many IntakeSessions
+     * const intakeSession = await prisma.intakeSession.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more IntakeSessions and only return the `id`
+     * const intakeSessionWithIdOnly = await prisma.intakeSession.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends IntakeSessionUpdateManyAndReturnArgs>(args: SelectSubset<T, IntakeSessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one IntakeSession.
+     * @param {IntakeSessionUpsertArgs} args - Arguments to update or create a IntakeSession.
+     * @example
+     * // Update or create a IntakeSession
+     * const intakeSession = await prisma.intakeSession.upsert({
+     *   create: {
+     *     // ... data to create a IntakeSession
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the IntakeSession we want to update
+     *   }
+     * })
+     */
+    upsert<T extends IntakeSessionUpsertArgs>(args: SelectSubset<T, IntakeSessionUpsertArgs<ExtArgs>>): Prisma__IntakeSessionClient<$Result.GetResult<Prisma.$IntakeSessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of IntakeSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionCountArgs} args - Arguments to filter IntakeSessions to count.
+     * @example
+     * // Count the number of IntakeSessions
+     * const count = await prisma.intakeSession.count({
+     *   where: {
+     *     // ... the filter for the IntakeSessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends IntakeSessionCountArgs>(
+      args?: Subset<T, IntakeSessionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IntakeSessionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a IntakeSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IntakeSessionAggregateArgs>(args: Subset<T, IntakeSessionAggregateArgs>): Prisma.PrismaPromise<GetIntakeSessionAggregateType<T>>
+
+    /**
+     * Group by IntakeSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntakeSessionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends IntakeSessionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: IntakeSessionGroupByArgs['orderBy'] }
+        : { orderBy?: IntakeSessionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, IntakeSessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIntakeSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the IntakeSession model
+   */
+  readonly fields: IntakeSessionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for IntakeSession.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__IntakeSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the IntakeSession model
+   */
+  interface IntakeSessionFieldRefs {
+    readonly id: FieldRef<"IntakeSession", 'String'>
+    readonly name: FieldRef<"IntakeSession", 'String'>
+    readonly intakePeriod: FieldRef<"IntakeSession", 'Intake'>
+    readonly applicationOpen: FieldRef<"IntakeSession", 'Boolean'>
+    readonly applicationDeadline: FieldRef<"IntakeSession", 'DateTime'>
+    readonly startsAt: FieldRef<"IntakeSession", 'DateTime'>
+    readonly endsAt: FieldRef<"IntakeSession", 'DateTime'>
+    readonly isActive: FieldRef<"IntakeSession", 'Boolean'>
+    readonly createdAt: FieldRef<"IntakeSession", 'DateTime'>
+    readonly updatedAt: FieldRef<"IntakeSession", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * IntakeSession findUnique
+   */
+  export type IntakeSessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * Filter, which IntakeSession to fetch.
+     */
+    where: IntakeSessionWhereUniqueInput
+  }
+
+  /**
+   * IntakeSession findUniqueOrThrow
+   */
+  export type IntakeSessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * Filter, which IntakeSession to fetch.
+     */
+    where: IntakeSessionWhereUniqueInput
+  }
+
+  /**
+   * IntakeSession findFirst
+   */
+  export type IntakeSessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * Filter, which IntakeSession to fetch.
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IntakeSessions to fetch.
+     */
+    orderBy?: IntakeSessionOrderByWithRelationInput | IntakeSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IntakeSessions.
+     */
+    cursor?: IntakeSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IntakeSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IntakeSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IntakeSessions.
+     */
+    distinct?: IntakeSessionScalarFieldEnum | IntakeSessionScalarFieldEnum[]
+  }
+
+  /**
+   * IntakeSession findFirstOrThrow
+   */
+  export type IntakeSessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * Filter, which IntakeSession to fetch.
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IntakeSessions to fetch.
+     */
+    orderBy?: IntakeSessionOrderByWithRelationInput | IntakeSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IntakeSessions.
+     */
+    cursor?: IntakeSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IntakeSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IntakeSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IntakeSessions.
+     */
+    distinct?: IntakeSessionScalarFieldEnum | IntakeSessionScalarFieldEnum[]
+  }
+
+  /**
+   * IntakeSession findMany
+   */
+  export type IntakeSessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * Filter, which IntakeSessions to fetch.
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IntakeSessions to fetch.
+     */
+    orderBy?: IntakeSessionOrderByWithRelationInput | IntakeSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing IntakeSessions.
+     */
+    cursor?: IntakeSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IntakeSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IntakeSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IntakeSessions.
+     */
+    distinct?: IntakeSessionScalarFieldEnum | IntakeSessionScalarFieldEnum[]
+  }
+
+  /**
+   * IntakeSession create
+   */
+  export type IntakeSessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a IntakeSession.
+     */
+    data: XOR<IntakeSessionCreateInput, IntakeSessionUncheckedCreateInput>
+  }
+
+  /**
+   * IntakeSession createMany
+   */
+  export type IntakeSessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many IntakeSessions.
+     */
+    data: IntakeSessionCreateManyInput | IntakeSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * IntakeSession createManyAndReturn
+   */
+  export type IntakeSessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * The data used to create many IntakeSessions.
+     */
+    data: IntakeSessionCreateManyInput | IntakeSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * IntakeSession update
+   */
+  export type IntakeSessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a IntakeSession.
+     */
+    data: XOR<IntakeSessionUpdateInput, IntakeSessionUncheckedUpdateInput>
+    /**
+     * Choose, which IntakeSession to update.
+     */
+    where: IntakeSessionWhereUniqueInput
+  }
+
+  /**
+   * IntakeSession updateMany
+   */
+  export type IntakeSessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update IntakeSessions.
+     */
+    data: XOR<IntakeSessionUpdateManyMutationInput, IntakeSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which IntakeSessions to update
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * Limit how many IntakeSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * IntakeSession updateManyAndReturn
+   */
+  export type IntakeSessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * The data used to update IntakeSessions.
+     */
+    data: XOR<IntakeSessionUpdateManyMutationInput, IntakeSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which IntakeSessions to update
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * Limit how many IntakeSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * IntakeSession upsert
+   */
+  export type IntakeSessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the IntakeSession to update in case it exists.
+     */
+    where: IntakeSessionWhereUniqueInput
+    /**
+     * In case the IntakeSession found by the `where` argument doesn't exist, create a new IntakeSession with this data.
+     */
+    create: XOR<IntakeSessionCreateInput, IntakeSessionUncheckedCreateInput>
+    /**
+     * In case the IntakeSession was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<IntakeSessionUpdateInput, IntakeSessionUncheckedUpdateInput>
+  }
+
+  /**
+   * IntakeSession delete
+   */
+  export type IntakeSessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+    /**
+     * Filter which IntakeSession to delete.
+     */
+    where: IntakeSessionWhereUniqueInput
+  }
+
+  /**
+   * IntakeSession deleteMany
+   */
+  export type IntakeSessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which IntakeSessions to delete
+     */
+    where?: IntakeSessionWhereInput
+    /**
+     * Limit how many IntakeSessions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * IntakeSession without action
+   */
+  export type IntakeSessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntakeSession
+     */
+    select?: IntakeSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IntakeSession
+     */
+    omit?: IntakeSessionOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16023,6 +17179,22 @@ export namespace Prisma {
   };
 
   export type ContactMessageScalarFieldEnum = (typeof ContactMessageScalarFieldEnum)[keyof typeof ContactMessageScalarFieldEnum]
+
+
+  export const IntakeSessionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    intakePeriod: 'intakePeriod',
+    applicationOpen: 'applicationOpen',
+    applicationDeadline: 'applicationDeadline',
+    startsAt: 'startsAt',
+    endsAt: 'endsAt',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type IntakeSessionScalarFieldEnum = (typeof IntakeSessionScalarFieldEnum)[keyof typeof IntakeSessionScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -17214,6 +18386,83 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"ContactMessage"> | Date | string
   }
 
+  export type IntakeSessionWhereInput = {
+    AND?: IntakeSessionWhereInput | IntakeSessionWhereInput[]
+    OR?: IntakeSessionWhereInput[]
+    NOT?: IntakeSessionWhereInput | IntakeSessionWhereInput[]
+    id?: StringFilter<"IntakeSession"> | string
+    name?: StringFilter<"IntakeSession"> | string
+    intakePeriod?: EnumIntakeFilter<"IntakeSession"> | $Enums.Intake
+    applicationOpen?: BoolFilter<"IntakeSession"> | boolean
+    applicationDeadline?: DateTimeNullableFilter<"IntakeSession"> | Date | string | null
+    startsAt?: DateTimeNullableFilter<"IntakeSession"> | Date | string | null
+    endsAt?: DateTimeNullableFilter<"IntakeSession"> | Date | string | null
+    isActive?: BoolFilter<"IntakeSession"> | boolean
+    createdAt?: DateTimeFilter<"IntakeSession"> | Date | string
+    updatedAt?: DateTimeFilter<"IntakeSession"> | Date | string
+  }
+
+  export type IntakeSessionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    intakePeriod?: SortOrder
+    applicationOpen?: SortOrder
+    applicationDeadline?: SortOrderInput | SortOrder
+    startsAt?: SortOrderInput | SortOrder
+    endsAt?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntakeSessionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: IntakeSessionWhereInput | IntakeSessionWhereInput[]
+    OR?: IntakeSessionWhereInput[]
+    NOT?: IntakeSessionWhereInput | IntakeSessionWhereInput[]
+    name?: StringFilter<"IntakeSession"> | string
+    intakePeriod?: EnumIntakeFilter<"IntakeSession"> | $Enums.Intake
+    applicationOpen?: BoolFilter<"IntakeSession"> | boolean
+    applicationDeadline?: DateTimeNullableFilter<"IntakeSession"> | Date | string | null
+    startsAt?: DateTimeNullableFilter<"IntakeSession"> | Date | string | null
+    endsAt?: DateTimeNullableFilter<"IntakeSession"> | Date | string | null
+    isActive?: BoolFilter<"IntakeSession"> | boolean
+    createdAt?: DateTimeFilter<"IntakeSession"> | Date | string
+    updatedAt?: DateTimeFilter<"IntakeSession"> | Date | string
+  }, "id">
+
+  export type IntakeSessionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    intakePeriod?: SortOrder
+    applicationOpen?: SortOrder
+    applicationDeadline?: SortOrderInput | SortOrder
+    startsAt?: SortOrderInput | SortOrder
+    endsAt?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: IntakeSessionCountOrderByAggregateInput
+    _max?: IntakeSessionMaxOrderByAggregateInput
+    _min?: IntakeSessionMinOrderByAggregateInput
+  }
+
+  export type IntakeSessionScalarWhereWithAggregatesInput = {
+    AND?: IntakeSessionScalarWhereWithAggregatesInput | IntakeSessionScalarWhereWithAggregatesInput[]
+    OR?: IntakeSessionScalarWhereWithAggregatesInput[]
+    NOT?: IntakeSessionScalarWhereWithAggregatesInput | IntakeSessionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"IntakeSession"> | string
+    name?: StringWithAggregatesFilter<"IntakeSession"> | string
+    intakePeriod?: EnumIntakeWithAggregatesFilter<"IntakeSession"> | $Enums.Intake
+    applicationOpen?: BoolWithAggregatesFilter<"IntakeSession"> | boolean
+    applicationDeadline?: DateTimeNullableWithAggregatesFilter<"IntakeSession"> | Date | string | null
+    startsAt?: DateTimeNullableWithAggregatesFilter<"IntakeSession"> | Date | string | null
+    endsAt?: DateTimeNullableWithAggregatesFilter<"IntakeSession"> | Date | string | null
+    isActive?: BoolWithAggregatesFilter<"IntakeSession"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"IntakeSession"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"IntakeSession"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -18347,6 +19596,97 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type IntakeSessionCreateInput = {
+    id?: string
+    name: string
+    intakePeriod: $Enums.Intake
+    applicationOpen?: boolean
+    applicationDeadline?: Date | string | null
+    startsAt?: Date | string | null
+    endsAt?: Date | string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IntakeSessionUncheckedCreateInput = {
+    id?: string
+    name: string
+    intakePeriod: $Enums.Intake
+    applicationOpen?: boolean
+    applicationDeadline?: Date | string | null
+    startsAt?: Date | string | null
+    endsAt?: Date | string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IntakeSessionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    intakePeriod?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
+    applicationOpen?: BoolFieldUpdateOperationsInput | boolean
+    applicationDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IntakeSessionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    intakePeriod?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
+    applicationOpen?: BoolFieldUpdateOperationsInput | boolean
+    applicationDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IntakeSessionCreateManyInput = {
+    id?: string
+    name: string
+    intakePeriod: $Enums.Intake
+    applicationOpen?: boolean
+    applicationDeadline?: Date | string | null
+    startsAt?: Date | string | null
+    endsAt?: Date | string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IntakeSessionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    intakePeriod?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
+    applicationOpen?: BoolFieldUpdateOperationsInput | boolean
+    applicationDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IntakeSessionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    intakePeriod?: EnumIntakeFieldUpdateOperationsInput | $Enums.Intake
+    applicationOpen?: BoolFieldUpdateOperationsInput | boolean
+    applicationDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -19176,6 +20516,45 @@ export namespace Prisma {
     message?: SortOrder
     resolved?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type IntakeSessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    intakePeriod?: SortOrder
+    applicationOpen?: SortOrder
+    applicationDeadline?: SortOrder
+    startsAt?: SortOrder
+    endsAt?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntakeSessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    intakePeriod?: SortOrder
+    applicationOpen?: SortOrder
+    applicationDeadline?: SortOrder
+    startsAt?: SortOrder
+    endsAt?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntakeSessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    intakePeriod?: SortOrder
+    applicationOpen?: SortOrder
+    applicationDeadline?: SortOrder
+    startsAt?: SortOrder
+    endsAt?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AdmissionApplicationCreateNestedManyWithoutProcessedByInput = {
