@@ -6,9 +6,9 @@ import { PrismaNeon } from "@prisma/adapter-neon";
 
 const connectionString = process.env.DIRECT_URL;
 
-if (!connectionString) {
-  throw new Error("DIRECT_URL is not defined");
-}
+// if (!connectionString) {
+//   throw new Error("DIRECT_URL is not defined");
+// }
 
 const adapter = new PrismaNeon({
   connectionString,

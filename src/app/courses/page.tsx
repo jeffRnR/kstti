@@ -1,3 +1,4 @@
+
 import prisma from "@/lib/prisma";
 import CoursesPage from "./CoursesPage";
 
