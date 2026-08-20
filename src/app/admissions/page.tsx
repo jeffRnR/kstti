@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
 export const metadata = {
   title: "Admissions",
@@ -51,7 +52,7 @@ export default function AdmissionsPage() {
           <div className="absolute inset-0 bg-black/75" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(229,173,35,0.07),transparent_60%)]" />
           <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E5AD23]/50 to-transparent" />
-          
+
 
           <div className="container-xl relative flex flex-col gap-6">
             <span className="tagline-center text-[#E5AD23]">Admissions</span>
@@ -147,6 +148,7 @@ export default function AdmissionsPage() {
           </div>
         </section>
       </main>
+      <WhatsAppBadge />
 
       <Footer />
     </>

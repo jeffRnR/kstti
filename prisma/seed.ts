@@ -149,12 +149,19 @@ async function main() {
       address: "P.O. Box 123-10304, Kerugoya",
       description:
         "The Kerugoya Campus is our founding site, set in the heart of Kirinyaga County. It hosts fully-equipped workshops, modern ICT labs, and a dedicated beauty studio, providing students with hands-on training in a supportive environment.",
-      directions: "Kerugoya Town, Anchor Plaza, 3rd Floor, Behind Family Bank",
+      directions:
+        "Kerugoya Town, Anchor Plaza, 3rd Floor, Behind Family Bank",
       phone: "+254 713 255 342",
       email: "kerugoya@kstti.ac.ke",
       image: "https://picsum.photos/seed/kerugoya/800/600",
-      mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d37.2769641!3d-0.5046316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182881001c5c1475%3A0x40c49b6cdde7a42e!2sAnchor%20Plaza%20Kerugoya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
-      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d37.2769641!3d-0.5046316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182881001c5c1475%3A0x40c49b6cdde7a42e!2sAnchor%20Plaza%20Kerugoya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
+
+      // Normal Google Maps URL for links
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=Anchor+Plaza+Kerugoya",
+
+      // Google Maps Embed URL for iframe
+      mapEmbedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d37.2769641!3d-0.5046316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182881001c5c1475%3A0x40c49b6cdde7a42e!2sAnchor%20Plaza%20Kerugoya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
     },
   });
 
@@ -171,8 +178,14 @@ async function main() {
       phone: "+254 798 469 493",
       email: "ruai@kstti.ac.ke",
       image: "https://picsum.photos/seed/ruai/800/600",
-      mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0!2d36.9916934!3d-1.2687497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f6be50bf3fa1b%3A0x144d6f34a7ead2c0!2sAnavah%20Printers%20Kenya!5e0!3m2!1sen!2ske!4v1700000000001!5m2!1sen!2ske",
-      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0!2d36.9916934!3d-1.2687497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f6be50bf3fa1b%3A0x144d6f34a7ead2c0!2sAnavah%20Printers%20Kenya!5e0!3m2!1sen!2ske!4v1700000000001!5m2!1sen!2ske",
+
+      // Normal Google Maps URL for links
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=Gatwick+Business+Center+Ruai",
+
+      // Google Maps Embed URL for iframe
+      mapEmbedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0!2d36.9916934!3d-1.2687497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f6be50bf3fa1b%3A0x144d6f34a7ead2c0!2sAnavah%20Printers%20Kenya!5e0!3m2!1sen!2ske!4v1700000000001!5m2!1sen!2ske",
     },
   });
 

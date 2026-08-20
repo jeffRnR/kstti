@@ -54,7 +54,7 @@ export default async function CampusesPage() {
               {campuses.map((campus) => (
                 <article
                   key={campus.name}
-                  className="card-hover group overflow-hidden !p-0"
+                  className="card-hover relative group overflow-hidden !p-0"
                 >
                   {/* Campus Image */}
                   {campus.image && (
@@ -124,7 +124,7 @@ export default async function CampusesPage() {
                     )}
 
                     {/* Action Buttons */}
-                    <div className="!mt-8 flex flex-wrap gap-3 justify-center">
+                    <div className="!mt-8 flex flex-wrap items-center justify-center gap-3">
                       <Link href="/apply" className="btn-primary">
                         Apply Now
                       </Link>
@@ -138,6 +138,11 @@ export default async function CampusesPage() {
                         Google Maps
                         <ExternalLink size={15} />
                       </a>
+                      {campus.whatsapp && (
+                        <WhatsAppBadge phoneNumber={campus.whatsapp} inline />
+                      )}
+
+
                     </div>
                   </div>
                 </article>
@@ -145,9 +150,9 @@ export default async function CampusesPage() {
             </div>
           </div>
         </section>
-        
+
       </main>
-      <WhatsAppBadge />
+
 
       <Footer />
     </>

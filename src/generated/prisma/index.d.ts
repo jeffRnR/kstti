@@ -3455,6 +3455,7 @@ export namespace Prisma {
     mapsUrl: string | null
     mapEmbedUrl: string | null
     phone: string | null
+    whatsapp: string | null
     email: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3472,6 +3473,7 @@ export namespace Prisma {
     mapsUrl: string | null
     mapEmbedUrl: string | null
     phone: string | null
+    whatsapp: string | null
     email: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3489,6 +3491,7 @@ export namespace Prisma {
     mapsUrl: number
     mapEmbedUrl: number
     phone: number
+    whatsapp: number
     email: number
     createdAt: number
     updatedAt: number
@@ -3508,6 +3511,7 @@ export namespace Prisma {
     mapsUrl?: true
     mapEmbedUrl?: true
     phone?: true
+    whatsapp?: true
     email?: true
     createdAt?: true
     updatedAt?: true
@@ -3525,6 +3529,7 @@ export namespace Prisma {
     mapsUrl?: true
     mapEmbedUrl?: true
     phone?: true
+    whatsapp?: true
     email?: true
     createdAt?: true
     updatedAt?: true
@@ -3542,6 +3547,7 @@ export namespace Prisma {
     mapsUrl?: true
     mapEmbedUrl?: true
     phone?: true
+    whatsapp?: true
     email?: true
     createdAt?: true
     updatedAt?: true
@@ -3632,6 +3638,7 @@ export namespace Prisma {
     mapsUrl: string | null
     mapEmbedUrl: string | null
     phone: string | null
+    whatsapp: string | null
     email: string | null
     createdAt: Date
     updatedAt: Date
@@ -3666,6 +3673,7 @@ export namespace Prisma {
     mapsUrl?: boolean
     mapEmbedUrl?: boolean
     phone?: boolean
+    whatsapp?: boolean
     email?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3687,6 +3695,7 @@ export namespace Prisma {
     mapsUrl?: boolean
     mapEmbedUrl?: boolean
     phone?: boolean
+    whatsapp?: boolean
     email?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3704,6 +3713,7 @@ export namespace Prisma {
     mapsUrl?: boolean
     mapEmbedUrl?: boolean
     phone?: boolean
+    whatsapp?: boolean
     email?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3721,12 +3731,13 @@ export namespace Prisma {
     mapsUrl?: boolean
     mapEmbedUrl?: boolean
     phone?: boolean
+    whatsapp?: boolean
     email?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CampusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "location" | "address" | "directions" | "description" | "image" | "mapsUrl" | "mapEmbedUrl" | "phone" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["campus"]>
+  export type CampusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "location" | "address" | "directions" | "description" | "image" | "mapsUrl" | "mapEmbedUrl" | "phone" | "whatsapp" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["campus"]>
   export type CampusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     departments?: boolean | Campus$departmentsArgs<ExtArgs>
     courses?: boolean | Campus$coursesArgs<ExtArgs>
@@ -3755,6 +3766,7 @@ export namespace Prisma {
       mapsUrl: string | null
       mapEmbedUrl: string | null
       phone: string | null
+      whatsapp: string | null
       email: string | null
       createdAt: Date
       updatedAt: Date
@@ -4195,6 +4207,7 @@ export namespace Prisma {
     readonly mapsUrl: FieldRef<"Campus", 'String'>
     readonly mapEmbedUrl: FieldRef<"Campus", 'String'>
     readonly phone: FieldRef<"Campus", 'String'>
+    readonly whatsapp: FieldRef<"Campus", 'String'>
     readonly email: FieldRef<"Campus", 'String'>
     readonly createdAt: FieldRef<"Campus", 'DateTime'>
     readonly updatedAt: FieldRef<"Campus", 'DateTime'>
@@ -17015,6 +17028,7 @@ export namespace Prisma {
     mapsUrl: 'mapsUrl',
     mapEmbedUrl: 'mapEmbedUrl',
     phone: 'phone',
+    whatsapp: 'whatsapp',
     email: 'email',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -17486,6 +17500,7 @@ export namespace Prisma {
     mapsUrl?: StringNullableFilter<"Campus"> | string | null
     mapEmbedUrl?: StringNullableFilter<"Campus"> | string | null
     phone?: StringNullableFilter<"Campus"> | string | null
+    whatsapp?: StringNullableFilter<"Campus"> | string | null
     email?: StringNullableFilter<"Campus"> | string | null
     createdAt?: DateTimeFilter<"Campus"> | Date | string
     updatedAt?: DateTimeFilter<"Campus"> | Date | string
@@ -17506,6 +17521,7 @@ export namespace Prisma {
     mapsUrl?: SortOrderInput | SortOrder
     mapEmbedUrl?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17529,6 +17545,7 @@ export namespace Prisma {
     mapsUrl?: StringNullableFilter<"Campus"> | string | null
     mapEmbedUrl?: StringNullableFilter<"Campus"> | string | null
     phone?: StringNullableFilter<"Campus"> | string | null
+    whatsapp?: StringNullableFilter<"Campus"> | string | null
     email?: StringNullableFilter<"Campus"> | string | null
     createdAt?: DateTimeFilter<"Campus"> | Date | string
     updatedAt?: DateTimeFilter<"Campus"> | Date | string
@@ -17549,6 +17566,7 @@ export namespace Prisma {
     mapsUrl?: SortOrderInput | SortOrder
     mapEmbedUrl?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17572,6 +17590,7 @@ export namespace Prisma {
     mapsUrl?: StringNullableWithAggregatesFilter<"Campus"> | string | null
     mapEmbedUrl?: StringNullableWithAggregatesFilter<"Campus"> | string | null
     phone?: StringNullableWithAggregatesFilter<"Campus"> | string | null
+    whatsapp?: StringNullableWithAggregatesFilter<"Campus"> | string | null
     email?: StringNullableWithAggregatesFilter<"Campus"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Campus"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Campus"> | Date | string
@@ -18571,6 +18590,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18591,6 +18611,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18611,6 +18632,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18631,6 +18653,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18651,6 +18674,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18668,6 +18692,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18685,6 +18710,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19918,6 +19944,7 @@ export namespace Prisma {
     mapsUrl?: SortOrder
     mapEmbedUrl?: SortOrder
     phone?: SortOrder
+    whatsapp?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19935,6 +19962,7 @@ export namespace Prisma {
     mapsUrl?: SortOrder
     mapEmbedUrl?: SortOrder
     phone?: SortOrder
+    whatsapp?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19952,6 +19980,7 @@ export namespace Prisma {
     mapsUrl?: SortOrder
     mapEmbedUrl?: SortOrder
     phone?: SortOrder
+    whatsapp?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22035,6 +22064,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22054,6 +22084,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22122,6 +22153,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22141,6 +22173,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22187,6 +22220,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22206,6 +22240,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22378,6 +22413,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22397,6 +22433,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22823,6 +22860,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22842,6 +22880,7 @@ export namespace Prisma {
     mapsUrl?: string | null
     mapEmbedUrl?: string | null
     phone?: string | null
+    whatsapp?: string | null
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23046,6 +23085,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23065,6 +23105,7 @@ export namespace Prisma {
     mapsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     mapEmbedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

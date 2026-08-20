@@ -91,8 +91,9 @@ model Campus {
   mapsUrl     String?
   mapEmbedUrl String?
 
-  phone String?
-  email String?
+  phone    String?
+  whatsapp String?
+  email    String?
 
   departments DepartmentCampus[]
   courses     Course[]

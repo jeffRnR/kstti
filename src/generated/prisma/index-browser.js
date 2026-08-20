@@ -144,6 +144,7 @@ exports.Prisma.CampusScalarFieldEnum = {
   mapsUrl: 'mapsUrl',
   mapEmbedUrl: 'mapEmbedUrl',
   phone: 'phone',
+  whatsapp: 'whatsapp',
   email: 'email',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
