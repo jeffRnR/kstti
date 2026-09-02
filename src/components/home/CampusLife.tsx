@@ -40,17 +40,11 @@ export default function CampusLife() {
           <span className="tagline-center">Campus Life</span>
           <h2 className="section-title">Experience Life At KSTTI</h2>
           <p className="section-subtitle">
-            From practical training and modern laboratories to student
-            activities and graduation, KSTTI provides an engaging learning
+            From practical training and modern facilities to student
+            activities, KSTTI provides an engaging learning
             environment that prepares students for successful careers.
           </p>
         </div>
-
-        {/*
-          Grid layout — 3 cols, auto rows of 220px.
-          Items use col/row span to create the Google Photos-style mosaic.
-          On mobile collapses to a single column with fixed heights.
-        */}
         <div className="mt-14 hidden gap-2 md:grid md:grid-cols-3 md:[grid-auto-rows:220px]">
           {gallery.map((item) => (
             <article
