@@ -27,7 +27,7 @@ export default function WhyChooseUs() {
           <span className="tagline-center">Why Choose KSTTI</span>
           <h2 className="section-title">Learn In A Supportive Environment</h2>
           <p className="section-subtitle">
-            Small class sizes allow every learner to receive individual attention
+            Every learner receives individual attention
             while developing practical workplace skills.
           </p>
         </div>
