@@ -16,7 +16,7 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover opacity-55"
       >
         <source
-          src="/215475.mp4"
+          src="https://res.cloudinary.com/dd2dwq4jy/video/upload/v1788374124/download_igt5i8.mp4"
           type="video/mp4"
         />
       </video>
