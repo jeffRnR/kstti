@@ -93,8 +93,6 @@ export default function IntakePopup() {
           <X size={18} />
         </button>
 
-        {/* <div className="h-2.5 bg-[#E5AD23] !p-0" /> */}
-
         <div className="!px-7 !pb-8 !pt-9 text-center sm:!px-9">
           <div>
             <span className="tagline-center">
@@ -113,22 +111,6 @@ export default function IntakePopup() {
             Applications are currently open. Start your application today and
             take the next step towards gaining practical skills for your future.
           </p>
-
-          {/* {intake.applicationDeadline && (
-            <p className="!mt-4 text-sm font-medium text-neutral-500">
-              Applications close on{" "}
-              <span className="font-semibold text-neutral-800">
-                {new Date(intake.applicationDeadline).toLocaleDateString(
-                  "en-KE",
-                  {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  },
-                )}
-              </span>
-            </p>
-          )} */}
 
           <div className="!mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
