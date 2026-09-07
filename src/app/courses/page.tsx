@@ -1,5 +1,6 @@
 
 import prisma from "@/lib/prisma";
+import Footer from "@/components/layout/Footer";
 import CoursesPage from "./CoursesPage";
 
 export const metadata = {
@@ -20,20 +21,23 @@ export default async function Page() {
   ]);
 
   return (
-    <CoursesPage
-      courses={courses.map((course) => ({
-        id: course.id,
-        name: course.name,
-        department: course.department.name,
-        intakeStatus: course.intakeStatus as "OPEN" | "CLOSING_SOON" | "CLOSED",
-        duration: course.duration,
-        campus: course.campusLabel,
-        feePerSemester: course.feePerSemester ?? "",
-      }))}
-      departments={departments.map((department) => ({
-        id: department.id,
-        name: department.name,
-      }))}
-    />
+    <>
+      <CoursesPage
+        courses={courses.map((course) => ({
+          id: course.id,
+          name: course.name,
+          department: course.department.name,
+          intakeStatus: course.intakeStatus as "OPEN" | "CLOSING_SOON" | "CLOSED",
+          duration: course.duration,
+          campus: course.campusLabel,
+          feePerSemester: course.feePerSemester ?? "",
+        }))}
+        departments={departments.map((department) => ({
+          id: department.id,
+          name: department.name,
+        }))}
+      />
+      <Footer />
+    </>
   );
 }

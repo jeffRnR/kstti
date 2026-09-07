@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import WhatsAppBadge from "@/components/layout/WhatsAppBadge";
 
@@ -356,8 +355,6 @@ export default function CoursesPage({
         </section>
       </main>
       <WhatsAppBadge />
-
-      <Footer />
     </>
   );
 }
