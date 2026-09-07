@@ -44,7 +44,7 @@ export default async function FeaturedCourses() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+        <div className="!mt-14 grid !gap-6 lg:grid-cols-2 xl:grid-cols-4">
           {departments.slice(0, 4).map((dept) => (
             <article
               key={dept.id}
@@ -56,13 +56,13 @@ export default async function FeaturedCourses() {
                 {dept.name}
               </h3>
 
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-neutral-500">
+              <p className="!mt-2 text-[0.9rem] leading-relaxed text-neutral-500">
                 {dept.description}
               </p>
 
               <div className="!my-2 h-px bg-neutral-100" />
 
-              <ul className="flex-1 space-y-2">
+              <ul className="flex-1 !space-y-2">
                 {dept.courses.map((course) => (
                   <li
                     key={course.id}

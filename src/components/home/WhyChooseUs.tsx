@@ -2,13 +2,17 @@
 
 const features = [
   {
+    title: "Accredited by TVETA",
+    description: "Study at an institution accredited by the Technical and Vocational Education and Training Authority.",
+  },
+  {
     title: "Quality Education",
     description: "Competency-based curricula delivered by qualified, experienced instructors.",
   },
-  {
-    title: "Personalized Student Support",
-    description: "Small class sizes mean every student gets the attention they deserve.",
-  },
+  // {
+  //   title: "Personalized Student Support",
+  //   description: "Small class sizes mean every student gets the attention they deserve.",
+  // },
   {
     title: "Competency Based Training",
     description: "Hands-on programmes built around real skills employers look for.",
@@ -17,11 +21,19 @@ const features = [
     title: "Industry Ready Graduates",
     description: "Leave campus equipped and confident to enter the job market.",
   },
+  {
+    title: "Job Placement Assistance",
+    description: "Receive guidance and support as you prepare to transition into employment.",
+  },
+  {
+    title: "Affordable Fees",
+    description: "Access quality technical education with flexible payment options available.",
+  },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="section bg-white">
+    <section className="section bg-[#F8F7F4]">
       <div className="container-xl flex flex-col gap-12">
         <div className="text-center">
           <span className="tagline-center">Why Choose KSTTI</span>
@@ -32,12 +44,12 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="!mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {features.map((feature) => (
             <article key={feature.title} className="card-hover flex flex-col">
               <div className="mb-6 h-1 w-10 rounded-full bg-[#E5AD23]" />
 
-              <h3 className="mb-3 font-[family:var(--font-serif)] text-xl font-bold text-[#0A0A0A]">
+              <h3 className="!mb-3 font-[family:var(--font-serif)] text-xl font-bold text-[#0A0A0A]">
                 {feature.title}
               </h3>
 

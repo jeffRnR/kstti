@@ -21,7 +21,7 @@ export default async function Departments() {
           <span className="tagline-center">Departments</span>
 
           <h2 className="section-title">
-            Discover Our Schools
+            Discover Our Schools/ Departments
           </h2>
 
           <p className="section-subtitle">
